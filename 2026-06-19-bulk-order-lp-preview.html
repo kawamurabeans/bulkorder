@@ -304,11 +304,20 @@
     aspect-ratio: 4/3;
     background: var(--beige);
     overflow: hidden;
+    position: relative;
   }
   .product-img-ph img {
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+  .product-pkg-note {
+    font-size: 0.75em;
+    color: #888;
+    letter-spacing: 0.04em;
+    text-align: center;
+    margin-top: -12px;
+    margin-bottom: 32px;
   }
   .product-body { padding: 28px; }
   .product-name {
@@ -677,6 +686,28 @@
     .original-inner { grid-template-columns: 1fr; gap: 32px; }
     .container, .container-wide { padding: 0 20px; }
     section { padding: 64px 0; }
+
+    /* ヒーロー: オーバーレイ強化 */
+    .hero-overlay { background: linear-gradient(to bottom, rgba(20,8,2,0.72) 0%, rgba(20,8,2,0.85) 100%); }
+
+    /* ヒーロータイトル: フォント縮小・折り返し改善 */
+    .hero-title { font-size: clamp(1.3rem, 7vw, 2rem); line-height: 1.6; letter-spacing: 0.04em; }
+    .hero-eyebrow { font-size: 0.58em; letter-spacing: 0.15em; }
+    .hero-sub { font-size: 0.64em; line-height: 2.4; letter-spacing: 0.01em; }
+    .hero-sub-br { display: block; }
+
+    /* ヒーローボタン: 縦並び・中央揃い */
+    .hero-content .btn-primary { display: block; margin: 0 auto; text-align: center; }
+    .hero-content .btn-outline { display: block; margin: 14px auto 0; text-align: center; }
+
+    /* セクションタイトル縮小 */
+    .sec-title { font-size: clamp(1.2rem, 6vw, 1.8rem); }
+
+    /* USECASEカード: タイトル折り返し改善 */
+    .usecase-title { font-size: clamp(0.9rem, 4.5vw, 1.2rem); word-break: keep-all; overflow-wrap: break-word; }
+
+    /* テンプレートグリッドを縦積み */
+    .template-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -712,7 +743,7 @@
       上質な甘納豆を<br>
       <em>世界に一つ</em>のパッケージで
     </h1>
-    <p class="hero-sub">50袋から承ります　／　オリジナルパッケージ対応　／　版代不要</p>
+    <p class="hero-sub">50袋から承ります　／　オリジナルパッケージ対応　／　<span class="hero-sub-br"></span>版代不要</p>
     <a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="btn-primary" target="_blank">ご相談はこちら</a>
     <a href="#original" class="btn-outline">テンプレートDL</a>
   </div>
@@ -803,9 +834,12 @@
     <h2 class="sec-title">袋果子おすすめラインナップ</h2>
     <div class="divider"></div>
     <p class="sec-lead">オリジナルパッケージでお届けできる袋果子シリーズをご紹介します</p>
+    <p class="product-pkg-note">※掲載写真は通常販売用のパッケージです。ご注文時はオリジナルデザインでお届けします。</p>
     <div class="product-list">
       <div class="product-card">
-        <div class="product-img-ph"><img src="images/item_3.jpg" alt="能登大納言"></div>
+        <div class="product-img-ph">
+          <img src="images/能登大納言_袋.jpg" alt="能登大納言">
+        </div>
         <div class="product-body">
           <div class="product-name">能登大納言</div>
           <div class="product-price">¥460</div>
@@ -813,7 +847,9 @@
         </div>
       </div>
       <div class="product-card">
-        <div class="product-img-ph"><img src="images/item_5.jpg" alt="石川県のだいず"></div>
+        <div class="product-img-ph">
+          <img src="images/石川県のだいず_袋.jpg" alt="石川県のだいず">
+        </div>
         <div class="product-body">
           <div class="product-name">石川県のだいず</div>
           <div class="product-price">¥410</div>
@@ -821,7 +857,9 @@
         </div>
       </div>
       <div class="product-card">
-        <div class="product-img-ph"><img src="images/kawamura_1.jpg" alt="白花美人" style="object-position: center 40%;"></div>
+        <div class="product-img-ph">
+          <img src="images/白花美人_袋.jpg" alt="白花美人">
+        </div>
         <div class="product-body">
           <div class="product-name">白花美人</div>
           <div class="product-price">¥410</div>
@@ -829,7 +867,9 @@
         </div>
       </div>
       <div class="product-card">
-        <div class="product-img-ph"><img src="images/素材8.jpg" alt="蓮の実"></div>
+        <div class="product-img-ph">
+          <img src="images/蓮の実_袋.jpg" alt="蓮の実">
+        </div>
         <div class="product-body">
           <div class="product-name">蓮の実</div>
           <div class="product-price">¥450</div>
@@ -838,7 +878,7 @@
       </div>
     </div>
     <div style="text-align:center; margin-top: 48px;">
-      <a href="【販売商品一覧URL】" style="display:inline-block; border:1px solid #412107; color:#412107; text-decoration:none; padding:12px 36px; font-size:0.85em; letter-spacing:0.12em;">販売商品一覧を見る →</a>
+      <a href="https://store-kawamura.com/amanatto" style="display:inline-block; border:1px solid #412107; color:#412107; text-decoration:none; padding:12px 36px; font-size:0.85em; letter-spacing:0.12em;">販売商品一覧を見る →</a>
     </div>
   </div>
 </section>
