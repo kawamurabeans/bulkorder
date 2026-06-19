@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大口・法人注文 | 甘納豆かわむら</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --brown:       #412107;
+    --brown-mid:   #6b3a1f;
+    --brown-light: #9c6240;
+    --gold:        #c9973a;
+    --beige:       #f5ede3;
+    --beige-light: #fdf8f3;
+    --text:        #2a1a0e;
+    --text-sub:    #6b5040;
+    --white:       #ffffff;
+    --gray:        #e8ddd4;
+  }
+
+  body {
+    font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.8;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    background: rgba(65,33,7,0.95);
+    backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 48px;
+  }
+  .header-logo {
+    color: var(--white);
+    font-size: 0.9em;
+    letter-spacing: 0.1em;
+  }
+  .header-logo span { color: var(--gold); }
+  nav a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    font-size: 0.78em;
+    letter-spacing: 0.08em;
+    margin-left: 28px;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    height: 100vh; min-height: 600px;
+    background: var(--brown);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  /* HERO SLIDESHOW */
+  .hero-slides {
+    position: absolute; inset: 0;
+  }
+  .hero-slide {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s ease-in-out;
+  }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center 40%;
+  }
+  .hero-slide:nth-child(2) img {
+    object-position: center center;
+  }
+  .hero-dots {
+    position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 10px; z-index: 3;
+  }
+  .hero-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    border: none; cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+    padding: 0;
+  }
+  .hero-dot.active {
+    background: var(--gold);
+    transform: scale(1.3);
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(65,33,7,0.4) 0%, rgba(65,33,7,0.75) 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 20px;
+  }
+  .hero-eyebrow {
+    color: var(--gold);
+    font-size: 0.78em;
+    letter-spacing: 0.25em;
+    margin-bottom: 24px;
+    display: block;
+  }
+  .hero-title {
+    color: var(--white);
+    font-size: clamp(2em, 5vw, 3.2em);
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.92em;
+    letter-spacing: 0.1em;
+    margin-bottom: 40px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--white);
+    text-decoration: none;
+    padding: 14px 40px;
+    font-size: 0.88em;
+    letter-spacing: 0.12em;
+    border: none; cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: #b8842e; transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: var(--white);
+    text-decoration: none;
+    padding: 13px 36px;
+    font-size: 0.88em;
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(255,255,255,0.5);
+    margin-left: 16px;
+    transition: background 0.25s, border-color 0.25s;
+  }
+  .btn-outline:hover { background: rgba(255,255,255,0.08); border-color: var(--white); }
+  .hero-scroll {
+    position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.4); font-size: 0.7em; letter-spacing: 0.2em;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .hero-scroll::after {
+    content: ''; display: block;
+    width: 1px; height: 40px;
+    background: rgba(255,255,255,0.3);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 96px 0; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 40px; }
+  .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+
+  .sec-eyebrow {
+    color: var(--gold);
+    font-size: 0.72em;
+    letter-spacing: 0.3em;
+    display: block;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .sec-title {
+    font-size: clamp(1.5em, 3vw, 2em);
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    text-align: center;
+    margin-bottom: 16px;
+    color: var(--brown);
+  }
+  .sec-lead {
+    text-align: center;
+    color: var(--text-sub);
+    font-size: 0.9em;
+    line-height: 2;
+    margin-bottom: 64px;
+  }
+  .divider {
+    width: 40px; height: 1px;
+    background: var(--gold);
+    margin: 20px auto 40px;
+  }
+
+  /* ── FEATURE CARDS ── */
+  .feature-section { background: var(--brown); }
+  .feature-section .sec-title { color: var(--white); }
+  .feature-section .sec-lead { color: rgba(255,255,255,0.65); }
+  .feature-section .divider { background: var(--gold); }
+  .feature-section .sec-eyebrow { color: var(--gold); }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .feature-card {
+    background: rgba(255,255,255,0.06);
+    padding: 48px 32px;
+    text-align: center;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.2s;
+  }
+  .feature-card:hover { background: rgba(255,255,255,0.10); }
+  .feature-icon {
+    font-size: 2em; margin-bottom: 20px;
+    display: block;
+  }
+  .feature-card h3 {
+    color: var(--gold);
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .feature-card p {
+    color: rgba(255,255,255,0.65);
+    font-size: 0.83em;
+    line-height: 1.9;
+  }
+
+  /* ── USE CASE ── */
+  .usecase-section { background: var(--beige-light); }
+  .usecase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3px;
+  }
+  .usecase-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: var(--brown-mid);
+    cursor: pointer;
+  }
+  .usecase-img-ph {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .usecase-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(65,33,7,0.85) 0%, transparent 60%);
+    display: flex; flex-direction: column;
+    justify-content: flex-end;
+    padding: 28px;
+    transition: background 0.3s;
+  }
+  .usecase-card:hover .usecase-overlay {
+    background: linear-gradient(to top, rgba(65,33,7,0.95) 0%, rgba(65,33,7,0.2) 60%);
+  }
+  .usecase-label {
+    color: var(--gold);
+    font-size: 0.72em;
+    letter-spacing: 0.2em;
+    margin-bottom: 6px;
+  }
+  .usecase-title {
+    color: var(--white);
+    font-size: 1.05em;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+  }
+  .usecase-desc {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.8em;
+    line-height: 1.8;
+    margin-top: 8px;
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.3s;
+  }
+  .usecase-card:hover .usecase-desc { max-height: 80px; }
+
+  /* ── PRODUCTS ── */
+  .product-section { background: var(--white); }
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .product-card {
+    border: 1px solid var(--gray);
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .product-card:hover { box-shadow: 0 8px 32px rgba(65,33,7,0.12); }
+  .product-img-ph {
+    aspect-ratio: 4/3;
+    background: var(--beige);
+    overflow: hidden;
+  }
+  .product-img-ph img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .product-body { padding: 28px; }
+  .product-name {
+    font-size: 1.1em;
+    letter-spacing: 0.08em;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+  .product-price {
+    color: var(--gold);
+    font-size: 0.85em;
+    margin-bottom: 12px;
+  }
+  .product-desc {
+    font-size: 0.82em;
+    color: var(--text-sub);
+    line-height: 1.9;
+  }
+
+  /* ── ORIGINAL PKG ── */
+  .original-section { background: var(--beige); }
+  .original-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .original-img-ph {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .original-img-ph img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .original-body { }
+  .original-body .sec-title { text-align: left; }
+  .original-body .sec-eyebrow { text-align: left; }
+  .original-body .divider { margin-left: 0; }
+  .original-body p {
+    font-size: 0.88em;
+    color: var(--text-sub);
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+  .badge {
+    display: inline-block;
+    border: 1px solid var(--brown);
+    color: var(--brown);
+    font-size: 0.72em;
+    letter-spacing: 0.12em;
+    padding: 3px 10px;
+    margin: 0 4px 8px 0;
+  }
+
+  /* ── TEMPLATE DOWNLOAD ── */
+  .template-section { background: var(--brown); padding: 80px 0; }
+  .template-section .sec-title { color: var(--white); }
+  .template-section .sec-lead { color: rgba(255,255,255,0.65); }
+  .template-section .divider { background: var(--gold); }
+  .template-section .sec-eyebrow { color: var(--gold); }
+
+  .template-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .template-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 36px 28px;
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .template-card:hover { background: rgba(255,255,255,0.10); }
+  .template-icon {
+    width: 56px; height: 56px;
+    background: rgba(201,151,58,0.2);
+    border: 1px solid rgba(201,151,58,0.4);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 1.4em;
+  }
+  .template-card h3 {
+    color: var(--white);
+    font-size: 0.92em;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .template-card p {
+    color: rgba(255,255,255,0.55);
+    font-size: 0.78em;
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .btn-dl {
+    display: block;
+    background: transparent;
+    color: var(--gold);
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 0.78em;
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(201,151,58,0.6);
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .btn-dl:hover {
+    background: rgba(201,151,58,0.15);
+    border-color: var(--gold);
+  }
+  .dl-note {
+    text-align: center;
+    color: rgba(255,255,255,0.35);
+    font-size: 0.75em;
+    margin-top: 32px;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── PRICE ── */
+  .price-section { background: var(--beige-light); }
+  .price-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 40px;
+  }
+  .price-table th {
+    background: var(--brown);
+    color: var(--white);
+    padding: 14px 20px;
+    font-size: 0.82em;
+    font-weight: normal;
+    letter-spacing: 0.1em;
+    text-align: center;
+  }
+  .price-table td {
+    padding: 14px 20px;
+    font-size: 0.85em;
+    border-bottom: 1px solid var(--gray);
+    text-align: center;
+    background: var(--white);
+  }
+  .price-table tr:last-child td {
+    background: rgba(201,151,58,0.08);
+    color: var(--brown);
+    font-weight: bold;
+  }
+  .price-table td:first-child { text-align: left; }
+  .price-note {
+    font-size: 0.8em;
+    color: var(--text-sub);
+    margin-top: 16px;
+    line-height: 2;
+  }
+  .price-note span { color: var(--brown); font-weight: bold; }
+
+  /* ── FLOW ── */
+  .flow-section { background: var(--white); }
+  .flow-list { list-style: none; margin-top: 48px; }
+  .flow-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0 32px;
+    margin-bottom: 0;
+    position: relative;
+  }
+  .flow-item:not(:last-child)::before {
+    content: '';
+    position: absolute;
+    left: 39px; top: 52px;
+    width: 1px; height: calc(100% + 0px);
+    background: var(--gray);
+  }
+  .flow-num {
+    width: 80px; height: 80px;
+    border: 1px solid var(--brown);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: var(--white);
+    flex-shrink: 0;
+  }
+  .flow-num span:first-child {
+    color: var(--gold);
+    font-size: 0.65em;
+    letter-spacing: 0.15em;
+  }
+  .flow-num span:last-child {
+    color: var(--brown);
+    font-size: 1.4em;
+  }
+  .flow-body {
+    padding: 20px 0 48px;
+  }
+  .flow-body h3 {
+    font-size: 1em;
+    font-weight: normal;
+    letter-spacing: 0.08em;
+    color: var(--brown);
+    margin-bottom: 8px;
+  }
+  .flow-body p {
+    font-size: 0.82em;
+    color: var(--text-sub);
+    line-height: 1.9;
+  }
+  .flow-body .flow-tag {
+    display: inline-block;
+    font-size: 0.7em;
+    padding: 2px 8px;
+    margin-bottom: 6px;
+    letter-spacing: 0.08em;
+  }
+  .tag-client { background: rgba(65,33,7,0.08); color: var(--brown); }
+  .tag-us     { background: rgba(201,151,58,0.15); color: #8a6020; }
+
+  /* ── SCHEDULE ── */
+  .schedule-section { background: var(--beige); }
+  .timeline {
+    position: relative;
+    margin-top: 48px;
+    padding-left: 24px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px;
+    width: 1px; height: calc(100% - 16px);
+    background: var(--brown-light);
+  }
+  .tl-item {
+    position: relative;
+    padding: 0 0 36px 32px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute; left: -4px; top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--brown);
+    border: 2px solid var(--white);
+    outline: 1px solid var(--brown);
+  }
+  .tl-day {
+    color: var(--gold);
+    font-size: 0.75em;
+    letter-spacing: 0.15em;
+    margin-bottom: 4px;
+  }
+  .tl-title {
+    font-size: 0.92em;
+    color: var(--brown);
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+  .tl-desc {
+    font-size: 0.78em;
+    color: var(--text-sub);
+    line-height: 1.8;
+  }
+  .tl-item.highlight .tl-title {
+    color: var(--brown);
+    font-weight: bold;
+  }
+  .tl-item.highlight::before {
+    background: var(--gold);
+    outline-color: var(--gold);
+  }
+
+  /* ── NOTES ── */
+  .notes-section { background: var(--white); }
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .note-card {
+    border-left: 2px solid var(--brown);
+    padding: 20px 24px;
+    background: var(--beige-light);
+  }
+  .note-card h3 {
+    font-size: 0.88em;
+    font-weight: normal;
+    color: var(--brown);
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .note-card p {
+    font-size: 0.8em;
+    color: var(--text-sub);
+    line-height: 1.9;
+  }
+
+  /* ── CANCEL ── */
+  .cancel-section { background: var(--beige-light); }
+  .cancel-row {
+    display: flex;
+    border-bottom: 1px solid var(--gray);
+    padding: 18px 0;
+    font-size: 0.87em;
+  }
+  .cancel-row:first-child { border-top: 1px solid var(--gray); }
+  .cancel-timing {
+    width: 260px;
+    flex-shrink: 0;
+    color: var(--text-sub);
+    letter-spacing: 0.04em;
+  }
+  .cancel-fee {
+    color: var(--brown);
+    font-size: 1.1em;
+    letter-spacing: 0.04em;
+  }
+
+  /* ── CTA ── */
+  .cta-section {
+    background: var(--brown);
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: url('images/kawamura_2.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.18;
+  }
+  .cta-section .container { position: relative; z-index: 1; }
+  .cta-section .sec-eyebrow { color: var(--gold); }
+  .cta-section .sec-title { color: var(--white); }
+  .cta-section .sec-lead { color: rgba(255,255,255,0.65); margin-bottom: 40px; }
+  .cta-section .divider { background: rgba(255,255,255,0.2); }
+  .cta-info {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    margin-top: 36px;
+    line-height: 2.2;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #1a0a03;
+    padding: 40px;
+    text-align: center;
+  }
+  footer p {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.75em;
+    letter-spacing: 0.08em;
+    line-height: 2;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    header { padding: 14px 20px; }
+    nav { display: none; }
+    .feature-grid, .template-grid, .usecase-grid,
+    .product-list, .notes-grid { grid-template-columns: 1fr; }
+    .original-inner { grid-template-columns: 1fr; gap: 32px; }
+    .container, .container-wide { padding: 0 20px; }
+    section { padding: 64px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-logo"><span>甘納豆かわむら</span> | 大口・法人注文</div>
+  <nav>
+    <a href="#usecase">ご利用シーン</a>
+    <a href="#products">商品一覧</a>
+    <a href="#original">オリジナルパッケージ</a>
+    <a href="#price">料金</a>
+    <a href="#flow">ご注文の流れ</a>
+    <a href="#contact">お問い合わせ</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-slides">
+    <div class="hero-slide active">
+      <img src="images/kawamura_2.jpg" alt="甘納豆かわむら 店内">
+    </div>
+    <div class="hero-slide">
+      <img src="images/袋菓子01.jpeg" alt="甘納豆かわむら パッケージ">
+    </div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">CUSTOM PACKAGE ORDER</span>
+    <h1 class="hero-title">
+      上質な甘納豆を<br>
+      <em>世界に一つ</em>のパッケージで
+    </h1>
+    <p class="hero-sub">50袋から承ります　／　オリジナルパッケージ対応　／　版代不要</p>
+    <a href="#contact" class="btn-primary">ご相談はこちら</a>
+    <a href="#original" class="btn-outline">テンプレートDL</a>
+  </div>
+  <div class="hero-dots">
+    <button class="hero-dot active" data-index="0"></button>
+    <button class="hero-dot" data-index="1"></button>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<!-- FEATURES -->
+<section class="feature-section">
+  <div class="container">
+    <span class="sec-eyebrow">FEATURES</span>
+    <h2 class="sec-title">甘納豆かわむらが選ばれる理由</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="container-wide">
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="feature-icon">🎋</span>
+        <h3>石川県金沢の本物の味</h3>
+        <p>にし茶屋街に店を構え、厳選した豆を使った甘納豆を一袋一袋丁寧に仕上げています。贈られた方に喜ばれる確かな品質です。</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📦</span>
+        <h3>50袋〜の小ロット対応</h3>
+        <p>最小50袋から承ります。版代不要のため、少ない数量でも費用を抑えてオリジナルパッケージでお届けできます。</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🎨</span>
+        <h3>テンプレートで簡単デザイン</h3>
+        <p>Adobe Illustratorのテンプレートをご提供します。ロゴや社名を入れるだけで、プロクオリティのパッケージが完成します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASE -->
+<section class="usecase-section" id="usecase">
+  <div class="container">
+    <span class="sec-eyebrow">USE CASE</span>
+    <h2 class="sec-title">こんなシーンでご利用いただいています</h2>
+    <div class="divider"></div>
+  </div>
+  <div class="container-wide">
+    <div class="usecase-grid">
+      <div class="usecase-card">
+        <img class="usecase-img-ph" src="images/kawamura_1.jpg" alt="店頭に並ぶ袋果子">
+        <div class="usecase-overlay">
+          <div class="usecase-label">CORPORATE GIFT</div>
+          <div class="usecase-title">企業の周年記念・お取引先への贈答品</div>
+          <div class="usecase-desc">社名・ロゴ入りのオリジナルパッケージで、日頃の感謝を特別な和菓子に込めて。</div>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <img class="usecase-img-ph" src="images/袋菓子01.jpeg" alt="袋果子パッケージ">
+        <div class="usecase-overlay">
+          <div class="usecase-label">NOVELTY</div>
+          <div class="usecase-title">社内イベント・展示会のノベルティ</div>
+          <div class="usecase-desc">会社説明会・展示会・社内イベントで配る記憶に残る一品として。</div>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <img class="usecase-img-ph" src="images/素材8.jpg" alt="木皿に並ぶ甘納豆">
+        <div class="usecase-overlay">
+          <div class="usecase-label">MEETING SWEETS</div>
+          <div class="usecase-title">組合・学会・定例会合のお菓子として</div>
+          <div class="usecase-desc">年に一度の総会や定例会合に、石川の名品を添えて特別感を演出します。</div>
+        </div>
+      </div>
+      <div class="usecase-card">
+        <img class="usecase-img-ph" src="images/kawamura_4-min.jpg" alt="甘納豆かわむら 店舗外観">
+        <div class="usecase-overlay">
+          <div class="usecase-label">WELCOME GIFT</div>
+          <div class="usecase-title">内定者・新入社員へのウェルカムギフト</div>
+          <div class="usecase-desc">会社のロゴ入りで贈る、入社前から心が温まるファーストギフト。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="product-section" id="products">
+  <div class="container">
+    <span class="sec-eyebrow">PRODUCTS</span>
+    <h2 class="sec-title">袋果子おすすめラインナップ</h2>
+    <div class="divider"></div>
+    <p class="sec-lead">オリジナルパッケージでお届けできる袋果子シリーズをご紹介します</p>
+    <div class="product-list">
+      <div class="product-card">
+        <div class="product-img-ph"><img src="images/item_3.jpg" alt="能登大納言"></div>
+        <div class="product-body">
+          <div class="product-name">能登大納言</div>
+          <div class="product-price">¥460</div>
+          <div class="product-desc">大粒で俵形の能登産大納言小豆。ひとつずつ手作業で丁寧に収穫された、石川県を代表する高品質な甘納豆です。</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-ph"><img src="images/item_5.jpg" alt="石川県のだいず"></div>
+        <div class="product-body">
+          <div class="product-name">石川県のだいず</div>
+          <div class="product-price">¥410</div>
+          <div class="product-desc">「まめだ」と読む金沢の地名に由来する大豆の系譜を継ぐ逸品。金沢地区産の良質な素材が生む深みある味わい。</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-ph"><img src="images/kawamura_1.jpg" alt="白花美人" style="object-position: center 40%;"></div>
+        <div class="product-body">
+          <div class="product-name">白花美人</div>
+          <div class="product-price">¥410</div>
+          <div class="product-desc">北海道JAきたみらい産のトップクオリティ白花豆。漂白剤不使用で、上生菓子のような滑らかな口溶けを楽しめます。</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img-ph"><img src="images/素材8.jpg" alt="蓮の実"></div>
+        <div class="product-body">
+          <div class="product-name">蓮の実</div>
+          <div class="product-price">¥450</div>
+          <div class="product-desc">仏教とも縁深い蓮の種子。蓮芯の苦味を活かしたホクホクの食感としっとりまろやかな口当たりは当店屈指の逸品です。</div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top: 48px;">
+      <a href="【販売商品一覧URL】" style="display:inline-block; border:1px solid #412107; color:#412107; text-decoration:none; padding:12px 36px; font-size:0.85em; letter-spacing:0.12em;">販売商品一覧を見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ORIGINAL PACKAGE -->
+<section class="original-section" id="original">
+  <div class="container">
+    <div class="original-inner">
+      <div class="original-img-ph"><img src="images/袋菓子01.jpeg" alt="オリジナルパッケージ実例"></div>
+      <div class="original-body">
+        <span class="sec-eyebrow">ORIGINAL PACKAGE</span>
+        <h2 class="sec-title">オリジナルパッケージ</h2>
+        <div class="divider"></div>
+        <p>袋の表面に企業ロゴ・社名・デザインを印刷したオリジナル仕様でお届けします。弊社側の表示項目（成分表示・製造者情報）は固定。デザインエリアをお客様に自由にご使用いただける形式です。</p>
+        <p>袋は白地の和紙風素材です。細かな文字がにじむ場合があるため、ご注文前に現物サンプルをご確認いただきます。</p>
+        <div>
+          <span class="badge">版代不要</span>
+          <span class="badge">最小50袋〜</span>
+          <span class="badge">送料無料（一部地域除く）</span>
+          <span class="badge">サンプル初回無料</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEMPLATE DOWNLOAD -->
+<section class="template-section">
+  <div class="container">
+    <span class="sec-eyebrow">TEMPLATE DOWNLOAD</span>
+    <h2 class="sec-title">デザインテンプレート</h2>
+    <div class="divider"></div>
+    <p class="sec-lead">印刷エリアの異なる2種類をご用意しています<br>Adobe Illustratorでロゴや社名を配置してお送りください</p>
+    <div class="template-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 640px; margin: 0 auto;">
+      <div class="template-card">
+        <div class="template-icon">📄</div>
+        <h3>通常 ver</h3>
+        <p>袋前面への印刷エリアが標準サイズのテンプレートです。はじめてのオリジナルパッケージにおすすめです。</p>
+        <a class="btn-dl" href="【AIテンプレートURL_通常】" download>ダウンロード（.ai）</a>
+      </div>
+      <div class="template-card" style="border: 1px solid var(--gold);">
+        <div class="template-icon">✨</div>
+        <h3>プレミアム ver <span style="font-size:0.75em; color:var(--gold); margin-left:4px;">+価格</span></h3>
+        <p>前面の印刷エリアをより広く確保したプレミアム仕様です。ロゴやビジュアルを大きく見せたい方に。</p>
+        <a class="btn-dl" href="【AIテンプレートURL_プレミアム】" download>ダウンロード（.ai）</a>
+      </div>
+    </div>
+    <p class="dl-note">※ ダウンロードにはAdobe Illustratorが必要です　／　ご不明な点はお問い合わせください</p>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="container">
+    <span class="sec-eyebrow">PRICING</span>
+    <h2 class="sec-title">料金・ロット数</h2>
+    <div class="divider"></div>
+    <p class="sec-lead">オリジナルパッケージをご希望の場合は数量に応じた手数料が加算されます</p>
+
+    <div style="display:grid; grid-template-columns:1fr auto; align-items:center; margin-bottom:8px; margin-top:32px;">
+      <span style="font-size:0.78em; letter-spacing:0.18em; color:var(--brown-light);">通常 ver</span>
+    </div>
+    <table class="price-table" style="margin-top:0;">
+      <thead>
+        <tr>
+          <th style="text-align:left">数量</th>
+          <th>加算手数料</th>
+          <th>単価例（定価¥410の商品）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>500袋</td><td>¥0</td><td>¥410</td></tr>
+        <tr><td>400袋</td><td>¥50</td><td>¥460</td></tr>
+        <tr><td>300袋</td><td>¥100</td><td>¥510</td></tr>
+        <tr><td>200袋</td><td>¥150</td><td>¥560</td></tr>
+        <tr><td>100袋</td><td>¥200</td><td>¥610</td></tr>
+        <tr><td>50〜99袋（最小ロット）</td><td>¥300</td><td>¥710</td></tr>
+      </tbody>
+    </table>
+
+    <table class="price-table" style="margin-top:2px; border-top:2px solid var(--gold);">
+      <thead>
+        <tr>
+          <th style="text-align:left; background:rgba(65,33,7,0.82); letter-spacing:0.12em;">プレミアム ver</th>
+          <th style="background:rgba(65,33,7,0.82);">上記に加え</th>
+          <th style="background:rgba(65,33,7,0.82);">一律加算</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>全数量共通</td>
+          <td style="color:var(--gold); font-weight:bold;">+¥30,000</td>
+          <td style="font-size:0.8em; color:var(--text-sub);">印刷エリア拡張費</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="price-note">
+      <span>版代不要</span>　／　<span>送料無料</span>（北海道・離島を除く）<br>
+      請求書・領収書の発行に対応しております。ご注文時にお申し付けください。
+    </p>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow-section" id="flow">
+  <div class="container">
+    <span class="sec-eyebrow">ORDER FLOW</span>
+    <h2 class="sec-title">ご注文の流れ</h2>
+    <div class="divider"></div>
+    <ul class="flow-list">
+      <li class="flow-item">
+        <div class="flow-num"><span>STEP</span><span>1</span></div>
+        <div class="flow-body">
+          <span class="flow-tag tag-client">お客様</span>
+          <h3>お問い合わせ・お見積もり</h3>
+          <p>商品・数量・ご希望の納品日をお知らせください。お見積もりは無料です。</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <div class="flow-num"><span>STEP</span><span>2</span></div>
+        <div class="flow-body">
+          <span class="flow-tag tag-client">お客様</span>
+          <h3>デザインデータのご入稿　<small style="color:var(--text-sub);font-size:0.85em">（オリジナルパッケージの場合）</small></h3>
+          <p>テンプレートにロゴ・社名を配置したデータをお送りください。推奨形式：Adobe Illustrator（アウトライン化）</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <div class="flow-num"><span>STEP</span><span>3</span></div>
+        <div class="flow-body">
+          <span class="flow-tag tag-us">弊社</span>
+          <h3>校正PDF・サンプルのご確認</h3>
+          <p>弊社にてデータを確認し校正PDFをお送りします。実物サンプル袋（2個）もお届けします（初回無料）。</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <div class="flow-num"><span>STEP</span><span>4</span></div>
+        <div class="flow-body">
+          <span class="flow-tag tag-client">お客様</span>
+          <h3>ご承諾・お振込み</h3>
+          <p>サンプルをご確認後、承諾のご連絡とお振込みをお願いいたします。<br>※ 着金確認後のデザイン変更はできません</p>
+        </div>
+      </li>
+      <li class="flow-item">
+        <div class="flow-num"><span>STEP</span><span>5</span></div>
+        <div class="flow-body">
+          <span class="flow-tag tag-us">弊社</span>
+          <h3>製造・発送</h3>
+          <p>着金確認後に製造を開始し、ヤマト運輸にてお届けします。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section class="schedule-section">
+  <div class="container">
+    <span class="sec-eyebrow">SCHEDULE</span>
+    <h2 class="sec-title">納品スケジュールの目安</h2>
+    <div class="divider"></div>
+    <p class="sec-lead">ご発注日から<strong>最短22日間</strong>で納品いたします<br>余裕をもってご検討の場合は納品日の<strong>45日前</strong>にご相談ください</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-day">DAY 1</div><div class="tl-title">ご発注・データ入稿</div><div class="tl-desc">発注数・商品内容の確定、デザインデータのご提出</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 3まで</div><div class="tl-title">データ調整・校正PDF送付</div><div class="tl-desc">弊社にてデータを確認し校正PDFをお送りします</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 7まで</div><div class="tl-title">校正PDFのご確認・承認</div><div class="tl-desc">内容をご確認のうえ、承認をご連絡ください</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 8</div><div class="tl-title">サンプル袋・請求書の発送</div><div class="tl-desc">ヤマト運輸にて発送いたします</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 10〜12</div><div class="tl-title">ご承認・お振込み</div><div class="tl-desc">袋の印刷前であればデザイン修正が可能です<br>※ この時点以降、数量の追加はできません</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 13</div><div class="tl-title">製造開始</div><div class="tl-desc">着金確認後、袋の印刷・豆炊き準備を開始します</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 14〜20</div><div class="tl-title">製造・梱包</div><div class="tl-desc">商品の製造・品質確認・梱包作業を行います</div></div>
+      <div class="tl-item highlight"><div class="tl-day">DAY 21</div><div class="tl-title">発送</div><div class="tl-desc">ヤマト運輸にて発送いたします</div></div>
+      <div class="tl-item highlight"><div class="tl-day">DAY 22</div><div class="tl-title">納品完了</div><div class="tl-desc">※ 地域により異なります</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- NOTES -->
+<section class="notes-section">
+  <div class="container">
+    <span class="sec-eyebrow">NOTES</span>
+    <h2 class="sec-title">ご注意事項</h2>
+    <div class="divider"></div>
+    <div class="notes-grid">
+      <div class="note-card">
+        <h3>袋の素材について</h3>
+        <p>袋は白地の和紙風素材のため、細かな文字がにじむ場合があります。事前に現物サンプルでご確認いただいてから本制作に進みます。</p>
+      </div>
+      <div class="note-card">
+        <h3>サンプルの発送について</h3>
+        <p>現物サンプルの発送は初回のみ無料です。2回目以降は着払いとなります。対応は最大3回までとなります。</p>
+      </div>
+      <div class="note-card">
+        <h3>デザイン変更について</h3>
+        <p>ご入金（着金）確認後は制作を開始いたします。それ以降のデザイン変更はお受けできません。</p>
+      </div>
+      <div class="note-card">
+        <h3>数量追加の締切について</h3>
+        <p>ご発注から10日目以降は、生産ラインの都合上、数量の追加はお受けできません。</p>
+      </div>
+      <div class="note-card">
+        <h3>入稿データについて</h3>
+        <p>推奨：Adobe Illustrator（アウトライン化）<br>可：JPEG・PNG（300dpi以上・1,000px以上）<br>※ 画像データは画質・色味が劣る場合があります</p>
+      </div>
+      <div class="note-card">
+        <h3>承認・入金の遅延について</h3>
+        <p>御社内での決裁状況により、ご承認・ご入金のタイミングで納期が前後いたします。余裕をもったご計画をお勧めします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANCEL -->
+<section class="cancel-section">
+  <div class="container">
+    <span class="sec-eyebrow">CANCELLATION</span>
+    <h2 class="sec-title">キャンセルについて</h2>
+    <div class="divider"></div>
+    <div style="max-width:560px; margin:0 auto;">
+      <div class="cancel-row"><div class="cancel-timing">納品・発送日の10日前</div><div class="cancel-fee">30%</div></div>
+      <div class="cancel-row"><div class="cancel-timing">納品・発送日の1週間前</div><div class="cancel-fee">50%</div></div>
+      <div class="cancel-row"><div class="cancel-timing">納品・発送日の3日前</div><div class="cancel-fee">70%</div></div>
+      <div class="cancel-row"><div class="cancel-timing">当日</div><div class="cancel-fee">100%</div></div>
+    </div>
+    <p style="text-align:center; font-size:0.78em; color:var(--text-sub); margin-top:20px;">※ 天災などやむを得ない事情による場合は除きます</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="container">
+    <span class="sec-eyebrow">CONTACT</span>
+    <h2 class="sec-title">お問い合わせ・ご相談</h2>
+    <div class="divider"></div>
+    <p class="sec-lead">数量・用途・ご予算など<br>どんな小さなご質問もお気軽にどうぞ<br>お見積もりは無料で承っております</p>
+    <a href="【お問い合わせフォームURL】" class="btn-primary">大口注文のお問い合わせはこちら</a>
+    <p class="cta-info">
+      甘納豆かわむら<br>
+      石川県金沢市野町2丁目24-7（にし茶屋街）<br>
+      TEL：076-282-7000
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>
+    © 甘納豆かわむら　石川県金沢市野町2丁目24-7<br>
+    ※ このページはプレビュー用です。WordPressに貼り付ける用のHTMLは別ファイルをご参照ください。
+  </p>
+</footer>
+
+<script>
+(function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  let current = 0;
+  let timer;
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = index;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+  }
+
+  function next() {
+    goTo((current + 1) % slides.length);
+  }
+
+  function startTimer() {
+    timer = setInterval(next, 5000);
+  }
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      clearInterval(timer);
+      goTo(parseInt(dot.dataset.index));
+      startTimer();
+    });
+  });
+
+  startTimer();
+})();
+</script>
+
+</body>
+</html>
