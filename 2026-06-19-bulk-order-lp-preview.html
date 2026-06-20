@@ -74,10 +74,10 @@
   .hero-slide img {
     width: 100%; height: 100%;
     object-fit: cover;
-    object-position: center 40%;
-  }
-  .hero-slide:nth-child(2) img {
     object-position: center center;
+  }
+  .hero-slide:first-child img {
+    object-position: center 40%;
   }
   .hero-dots {
     position: absolute; bottom: 48px; left: 50%; transform: translateX(-50%);
@@ -96,18 +96,21 @@
   }
   .hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to bottom, rgba(65,33,7,0.4) 0%, rgba(65,33,7,0.75) 100%);
+    background:
+      radial-gradient(ellipse 65% 52% at center, rgba(28,14,4,0.72) 0%, rgba(28,14,4,0.28) 65%, transparent 100%),
+      linear-gradient(to bottom, rgba(65,33,7,0.4) 0%, rgba(65,33,7,0.75) 100%);
   }
   .hero-content {
     position: relative; z-index: 2;
     padding: 0 20px;
   }
   .hero-eyebrow {
-    color: var(--gold);
+    color: #e0b765;
     font-size: 0.78em;
     letter-spacing: 0.25em;
     margin-bottom: 24px;
     display: block;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.85), 0 0 16px rgba(0,0,0,0.6);
   }
   .hero-title {
     color: var(--white);
@@ -116,10 +119,12 @@
     letter-spacing: 0.08em;
     line-height: 1.5;
     margin-bottom: 20px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.55);
   }
   .hero-title em {
     font-style: normal;
-    color: var(--gold);
+    color: #e0b765;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.85), 0 0 18px rgba(0,0,0,0.6);
   }
   .hero-sub {
     color: rgba(255,255,255,0.75);
@@ -195,6 +200,74 @@
     width: 40px; height: 1px;
     background: var(--gold);
     margin: 20px auto 40px;
+  }
+
+  /* ── ABOUT ── */
+  .about-section { background: var(--white); padding: 0; }
+  .about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 520px;
+  }
+  .about-img {
+    position: relative;
+    overflow: hidden;
+  }
+  .about-img img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+  }
+  .about-img::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to right, rgba(65,33,7,0.15) 0%, transparent 60%);
+  }
+  .about-text {
+    padding: 72px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .about-lead {
+    font-size: 0.9em;
+    color: var(--text-sub);
+    line-height: 2.2;
+    margin-bottom: 36px;
+  }
+  .about-badge-row {
+    margin-bottom: 36px;
+  }
+  .about-badge {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--brown);
+    font-size: 0.78em;
+    letter-spacing: 0.1em;
+    padding: 8px 16px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .about-badge:hover {
+    background: var(--gold);
+    color: var(--white);
+  }
+  .about-link {
+    display: inline-block;
+    color: var(--brown);
+    font-size: 0.82em;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    border: 1px solid var(--brown);
+    padding: 12px 32px;
+    transition: background 0.2s, color 0.2s;
+    align-self: flex-start;
+  }
+  .about-link:hover { background: var(--brown); color: var(--white); }
+  @media (max-width: 720px) {
+    .about-inner { grid-template-columns: 1fr; }
+    .about-img { min-height: 260px; }
+    .about-text { padding: 48px 24px; }
   }
 
   /* ── FEATURE CARDS ── */
@@ -348,6 +421,8 @@
   .original-img-ph {
     aspect-ratio: 4/3;
     overflow: hidden;
+    border-radius: 14px;
+    box-shadow: 0 12px 32px rgba(65,33,7,0.10);
   }
   .original-img-ph img {
     width: 100%; height: 100%;
@@ -383,7 +458,7 @@
 
   .template-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 24px;
     margin-top: 48px;
   }
@@ -501,6 +576,8 @@
     align-items: center; justify-content: center;
     background: var(--white);
     flex-shrink: 0;
+    position: relative;
+    z-index: 1;
   }
   .flow-num span:first-child {
     color: var(--gold);
@@ -677,6 +754,20 @@
     line-height: 2;
   }
 
+  /* ── PARALLAX STRIPS ── */
+  .parallax-strip {
+    min-height: 260px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+  .parallax-strip.img-01 { background-image: url('images/kawamura_1.jpg'); }
+  .parallax-strip.img-02 { background-image: url('images/素材8.jpg'); }
+  .parallax-strip.img-03 { background-image: url('images/kawamura_4-min.jpg'); }
+  .parallax-strip.img-04 { background-image: url('images/袋菓子02.jpeg'); }
+  .parallax-strip.img-05 { background-image: url('images/recruit_1.jpg'); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
     header { padding: 14px 20px; }
@@ -701,7 +792,7 @@
     .hero-content .btn-outline { display: block; margin: 14px auto 0; text-align: center; }
 
     /* セクションタイトル縮小 */
-    .sec-title { font-size: clamp(1.2rem, 6vw, 1.8rem); }
+    .sec-title { font-size: clamp(1.2rem, 5.4vw, 1.8rem); letter-spacing: 0.03em; }
 
     /* USECASEカード: タイトル折り返し改善 */
     .usecase-title { font-size: clamp(0.9rem, 4.5vw, 1.2rem); word-break: keep-all; overflow-wrap: break-word; }
@@ -733,7 +824,19 @@
       <img src="images/kawamura_2.jpg" alt="甘納豆かわむら 店内">
     </div>
     <div class="hero-slide">
-      <img src="images/袋菓子01.jpeg" alt="甘納豆かわむら パッケージ">
+      <img src="images/袋菓子02.jpeg" alt="甘納豆かわむら 袋菓子各種">
+    </div>
+    <div class="hero-slide">
+      <img src="images/素材8.jpg" alt="木皿に並ぶ甘納豆">
+    </div>
+    <div class="hero-slide">
+      <img src="images/kawamura_1.jpg" alt="店頭に並ぶ袋菓子">
+    </div>
+    <div class="hero-slide">
+      <img src="images/recruit_1.jpg" alt="甘納豆かわむら 手提げ袋">
+    </div>
+    <div class="hero-slide">
+      <img src="images/kawamura_4-min.jpg" alt="甘納豆かわむら 店舗外観">
     </div>
   </div>
   <div class="hero-overlay"></div>
@@ -750,6 +853,10 @@
   <div class="hero-dots">
     <button class="hero-dot active" data-index="0"></button>
     <button class="hero-dot" data-index="1"></button>
+    <button class="hero-dot" data-index="2"></button>
+    <button class="hero-dot" data-index="3"></button>
+    <button class="hero-dot" data-index="4"></button>
+    <button class="hero-dot" data-index="5"></button>
   </div>
   <div class="hero-scroll">SCROLL</div>
 </section>
@@ -764,7 +871,7 @@
   <div class="container-wide">
     <div class="feature-grid">
       <div class="feature-card">
-        <span class="feature-icon">🎋</span>
+        <span class="feature-icon">🫘</span>
         <h3>石川県金沢の本物の味</h3>
         <p>にし茶屋街に店を構え、厳選した豆を使った甘納豆を一袋一袋丁寧に仕上げています。贈られた方に喜ばれる確かな品質です。</p>
       </div>
@@ -782,6 +889,25 @@
   </div>
 </section>
 
+<!-- ABOUT -->
+<section class="about-section">
+  <div class="about-inner">
+    <div class="about-img">
+      <img src="images/kawamura_8.jpg" alt="甘納豆かわむら 店舗外観">
+    </div>
+    <div class="about-text">
+      <span class="sec-eyebrow" style="text-align:left;">ABOUT</span>
+      <h2 class="sec-title" style="text-align:left; font-size:1.6em;">甘納豆かわむらについて</h2>
+      <div class="divider" style="margin-left:0;"></div>
+      <p class="about-lead">石川県金沢のにし茶屋街に、2001年に創業した甘納豆の専門店です。愛らしいパッケージと本物志向のお菓子作りで、地元はもちろん全国のお客様にご愛顧いただいています。</p>
+      <div class="about-badge-row">
+        <a href="https://award.tabelog.com/hyakumeiten/wagashi_west/2023" class="about-badge" target="_blank" rel="noopener" style="text-decoration:none;">🏅 和菓子・甘味処 WEST 100名店 選出</a>
+      </div>
+      <a href="https://mame-kawamura.com" class="about-link" target="_blank" rel="noopener">ブランドサイトを見る →</a>
+    </div>
+  </div>
+</section>
+
 <!-- USE CASE -->
 <section class="usecase-section" id="usecase">
   <div class="container">
@@ -792,7 +918,7 @@
   <div class="container-wide">
     <div class="usecase-grid">
       <div class="usecase-card">
-        <img class="usecase-img-ph" src="images/kawamura_1.jpg" alt="店頭に並ぶ袋果子">
+        <img class="usecase-img-ph" src="images/corporate_gift.png" alt="取引先へ手土産を贈るビジネスシーン">
         <div class="usecase-overlay">
           <div class="usecase-label">CORPORATE GIFT</div>
           <div class="usecase-title">企業の周年記念・お取引先への贈答品</div>
@@ -800,7 +926,7 @@
         </div>
       </div>
       <div class="usecase-card">
-        <img class="usecase-img-ph" src="images/袋菓子01.jpeg" alt="袋果子パッケージ">
+        <img class="usecase-img-ph" src="images/novelty_event.png" alt="展示会ブースでノベルティを配布するシーン">
         <div class="usecase-overlay">
           <div class="usecase-label">NOVELTY</div>
           <div class="usecase-title">社内イベント・展示会のノベルティ</div>
@@ -808,7 +934,7 @@
         </div>
       </div>
       <div class="usecase-card">
-        <img class="usecase-img-ph" src="images/素材8.jpg" alt="木皿に並ぶ甘納豆">
+        <img class="usecase-img-ph" src="images/meeting_seminar.png" alt="大会場での講演・セミナーの様子">
         <div class="usecase-overlay">
           <div class="usecase-label">MEETING SWEETS</div>
           <div class="usecase-title">組合・学会・定例会合のお菓子として</div>
@@ -816,7 +942,7 @@
         </div>
       </div>
       <div class="usecase-card">
-        <img class="usecase-img-ph" src="images/kawamura_4-min.jpg" alt="甘納豆かわむら 店舗外観">
+        <img class="usecase-img-ph" src="images/welcome_gift.jpg" alt="桜の下に立つ新社会人">
         <div class="usecase-overlay">
           <div class="usecase-label">WELCOME GIFT</div>
           <div class="usecase-title">内定者・新入社員へのウェルカムギフト</div>
@@ -826,6 +952,8 @@
     </div>
   </div>
 </section>
+
+<div class="parallax-strip img-01"></div>
 
 <!-- PRODUCTS -->
 <section class="product-section" id="products">
@@ -883,11 +1011,13 @@
   </div>
 </section>
 
+<div class="parallax-strip img-02"></div>
+
 <!-- ORIGINAL PACKAGE -->
 <section class="original-section" id="original">
   <div class="container">
     <div class="original-inner">
-      <div class="original-img-ph"><img src="images/袋菓子01.jpeg" alt="オリジナルパッケージ実例"></div>
+      <div class="original-img-ph"><img src="images/original_package.png" alt="20周年記念のオリジナルパッケージ実例"></div>
       <div class="original-body">
         <span class="sec-eyebrow">ORIGINAL PACKAGE</span>
         <h2 class="sec-title">オリジナルパッケージ</h2>
@@ -912,17 +1042,19 @@
     <h2 class="sec-title">デザインテンプレート</h2>
     <div class="divider"></div>
     <p class="sec-lead">印刷エリアの異なる2種類をご用意しています<br>Adobe Illustratorでロゴや社名を配置してお送りください</p>
-    <div class="template-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 640px; margin: 0 auto;">
+    <div class="template-grid" style="max-width: 640px; margin: 0 auto;">
       <div class="template-card">
         <div class="template-icon">📄</div>
         <h3>通常 ver</h3>
-        <p>袋前面への印刷エリアが標準サイズのテンプレートです。はじめてのオリジナルパッケージにおすすめです。</p>
+        <p>袋前面への印刷スペースが設けられたテンプレートです。はじめてのオリジナルパッケージにおすすめです。</p>
+        <p style="color:rgba(255,255,255,0.45); font-size:0.75em; margin-bottom:20px;">※ 印刷スペース　制限あり</p>
         <a class="btn-dl" href="【AIテンプレートURL_通常】" download>ダウンロード（.ai）</a>
       </div>
       <div class="template-card" style="border: 1px solid var(--gold);">
         <div class="template-icon">✨</div>
         <h3>プレミアム ver <span style="font-size:0.75em; color:var(--gold); margin-left:4px;">+価格</span></h3>
         <p>前面の印刷エリアをより広く確保したプレミアム仕様です。ロゴやビジュアルを大きく見せたい方に。</p>
+        <p style="color:rgba(255,255,255,0.45); font-size:0.75em; margin-bottom:20px;">※ 印刷スペース　制限なし<br>ただし、四方各3mmの枠ありになります</p>
         <a class="btn-dl" href="【AIテンプレートURL_プレミアム】" download>ダウンロード（.ai）</a>
       </div>
     </div>
@@ -959,12 +1091,16 @@
       </tbody>
     </table>
 
-    <table class="price-table" style="margin-top:2px; border-top:2px solid var(--gold);">
+    <div style="display:grid; grid-template-columns:1fr auto; align-items:center; margin-bottom:8px; margin-top:48px;">
+      <span style="font-size:0.78em; letter-spacing:0.18em; color:var(--brown-light);">プレミアム ver</span>
+      <span style="font-size:0.72em; color:var(--text-sub);">通常 ver の料金に加算されます</span>
+    </div>
+    <table class="price-table" style="margin-top:0;">
       <thead>
         <tr>
-          <th style="text-align:left; background:rgba(65,33,7,0.82); letter-spacing:0.12em;">プレミアム ver</th>
-          <th style="background:rgba(65,33,7,0.82);">上記に加え</th>
-          <th style="background:rgba(65,33,7,0.82);">一律加算</th>
+          <th style="text-align:left">対象</th>
+          <th>加算手数料</th>
+          <th>内容</th>
         </tr>
       </thead>
       <tbody>
@@ -982,6 +1118,8 @@
     </p>
   </div>
 </section>
+
+<div class="parallax-strip img-03"></div>
 
 <!-- FLOW -->
 <section class="flow-section" id="flow">
@@ -1034,6 +1172,8 @@
   </div>
 </section>
 
+<div class="parallax-strip img-04"></div>
+
 <!-- SCHEDULE -->
 <section class="schedule-section">
   <div class="container">
@@ -1054,6 +1194,8 @@
     </div>
   </div>
 </section>
+
+<div class="parallax-strip img-05"></div>
 
 <!-- NOTES -->
 <section class="notes-section">
@@ -1080,7 +1222,7 @@
       </div>
       <div class="note-card">
         <h3>入稿データについて</h3>
-        <p>推奨：Adobe Illustrator（アウトライン化）<br>可：JPEG・PNG（300dpi以上・1,000px以上）<br>※ 画像データは画質・色味が劣る場合があります</p>
+        <p>推奨：Adobe Illustrator（アウトライン化）<br>可：JPEG・PNG（300dpi以上・1,000px以上）<br>※ 画像データは画質・色味が劣る場合があります<br>※ 金色・銀色は印刷に入れられません</p>
       </div>
       <div class="note-card">
         <h3>承認・入金の遅延について</h3>
@@ -1113,7 +1255,8 @@
     <h2 class="sec-title">お問い合わせ・ご相談</h2>
     <div class="divider"></div>
     <p class="sec-lead">数量・用途・ご予算など<br>どんな小さなご質問もお気軽にどうぞ<br>お見積もりは無料で承っております</p>
-    <a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="btn-primary">大口注文のお問い合わせはこちら</a>
+    <a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="btn-primary" target="_blank">ご相談はこちら</a>
+    <a href="#original" class="btn-outline">テンプレートDL</a>
     <p class="cta-info">
       甘納豆かわむら<br>
       石川県金沢市野町2丁目24-7（にし茶屋街）<br>
@@ -1130,6 +1273,23 @@
 </footer>
 
 <script>
+// モバイル疑似パラレックス
+(function() {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (!isMobile) return;
+  const strips = document.querySelectorAll('.parallax-strip');
+  function updateParallax() {
+    strips.forEach(function(strip) {
+      const rect = strip.getBoundingClientRect();
+      const center = rect.top + rect.height / 2;
+      const offset = (window.innerHeight / 2 - center) * 0.3;
+      strip.style.backgroundPosition = 'center calc(50% + ' + offset + 'px)';
+    });
+  }
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
+})();
+
 (function() {
   const slides = document.querySelectorAll('.hero-slide');
   const dots = document.querySelectorAll('.hero-dot');
