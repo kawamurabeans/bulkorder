@@ -768,6 +768,9 @@
   .parallax-strip.img-04 { background-image: url('images/袋菓子02.jpeg'); }
   .parallax-strip.img-05 { background-image: url('images/recruit_1.jpg'); }
 
+  /* スマホ専用改行（デフォルト非表示） */
+  .sp-br { display: none; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
     header { padding: 14px 20px; }
@@ -792,13 +795,38 @@
     .hero-content .btn-outline { display: block; margin: 14px auto 0; text-align: center; }
 
     /* セクションタイトル縮小 */
-    .sec-title { font-size: clamp(1.2rem, 5.4vw, 1.8rem); letter-spacing: 0.03em; }
+    .sec-title { font-size: clamp(1.2rem, 5.4vw, 1.8rem); letter-spacing: 0.03em; text-wrap: balance; }
 
     /* USECASEカード: タイトル折り返し改善 */
     .usecase-title { font-size: clamp(0.9rem, 4.5vw, 1.2rem); word-break: keep-all; overflow-wrap: break-word; }
 
+    /* USECASEラベル・オーバーレイをスマホで見やすく */
+    .usecase-overlay { background: linear-gradient(to top, rgba(65,33,7,0.97) 0%, rgba(65,33,7,0.72) 42%, rgba(65,33,7,0.28) 72%, transparent 100%); }
+    .usecase-label { color: #e8c87e; font-size: 0.84em; letter-spacing: 0.14em; text-shadow: 0 1px 6px rgba(0,0,0,0.92), 0 0 4px rgba(0,0,0,0.8); }
+
     /* テンプレートグリッドを縦積み */
     .template-grid { grid-template-columns: 1fr; }
+
+    /* テンプレート説明文のぶら下がり改善 */
+    .template-card p { text-wrap: balance; }
+
+    /* スマホ専用改行を有効化 */
+    .sp-br { display: inline; }
+
+    /* オリジナルパッケージ説明文をSPで読みやすく（⑦） */
+    .original-body p { font-size: 0.82em; line-height: 1.95; }
+
+    /* 料金表をSPで詰めて縦罫線追加（⑧） */
+    .price-table th, .price-table td { font-size: 0.66em; padding: 9px 5px; letter-spacing: 0; line-height: 1.45; }
+    .price-table td { border-right: 1px solid var(--gray); }
+    .price-table td:last-child { border-right: none; }
+    .price-table th { border-right: 1px solid rgba(255,255,255,0.18); }
+    .price-table th:last-child { border-right: none; }
+    .price-table .th-sub, .price-table .td-sub { font-size: 0.82em; opacity: 0.85; }
+
+    /* CTAボタンをheroと同じ縦並び中央に（⑨） */
+    .cta-section .btn-primary { display: block; margin: 0 auto; text-align: center; }
+    .cta-section .btn-outline { display: block; margin: 14px auto 0; text-align: center; }
   }
 </style>
 </head>
@@ -912,7 +940,7 @@
 <section class="usecase-section" id="usecase">
   <div class="container">
     <span class="sec-eyebrow">USE CASE</span>
-    <h2 class="sec-title">こんなシーンでご利用いただいています</h2>
+    <h2 class="sec-title">こんなシーンで<br class="sp-br">ご利用いただいています</h2>
     <div class="divider"></div>
   </div>
   <div class="container-wide">
@@ -921,7 +949,7 @@
         <img class="usecase-img-ph" src="images/corporate_gift.png" alt="取引先へ手土産を贈るビジネスシーン">
         <div class="usecase-overlay">
           <div class="usecase-label">CORPORATE GIFT</div>
-          <div class="usecase-title">企業の周年記念・お取引先への贈答品</div>
+          <div class="usecase-title">企業の周年記念・お取引先<br class="sp-br">への贈答品</div>
           <div class="usecase-desc">社名・ロゴ入りのオリジナルパッケージで、日頃の感謝を特別な和菓子に込めて。</div>
         </div>
       </div>
@@ -929,7 +957,7 @@
         <img class="usecase-img-ph" src="images/novelty_event.png" alt="展示会ブースでノベルティを配布するシーン">
         <div class="usecase-overlay">
           <div class="usecase-label">NOVELTY</div>
-          <div class="usecase-title">社内イベント・展示会のノベルティ</div>
+          <div class="usecase-title">社内イベント・展示会の<br class="sp-br">ノベルティ</div>
           <div class="usecase-desc">会社説明会・展示会・社内イベントで配る記憶に残る一品として。</div>
         </div>
       </div>
@@ -937,7 +965,7 @@
         <img class="usecase-img-ph" src="images/meeting_seminar.png" alt="大会場での講演・セミナーの様子">
         <div class="usecase-overlay">
           <div class="usecase-label">MEETING SWEETS</div>
-          <div class="usecase-title">組合・学会・定例会合のお菓子として</div>
+          <div class="usecase-title">組合・学会・定例会合の<br class="sp-br">お菓子として</div>
           <div class="usecase-desc">年に一度の総会や定例会合に、石川の名品を添えて特別感を演出します。</div>
         </div>
       </div>
@@ -945,7 +973,7 @@
         <img class="usecase-img-ph" src="images/welcome_gift.jpg" alt="桜の下に立つ新社会人">
         <div class="usecase-overlay">
           <div class="usecase-label">WELCOME GIFT</div>
-          <div class="usecase-title">内定者・新入社員へのウェルカムギフト</div>
+          <div class="usecase-title">内定者・新入社員への<br class="sp-br">ウェルカムギフト</div>
           <div class="usecase-desc">会社のロゴ入りで贈る、入社前から心が温まるファーストギフト。</div>
         </div>
       </div>
@@ -961,7 +989,7 @@
     <span class="sec-eyebrow">PRODUCTS</span>
     <h2 class="sec-title">袋果子おすすめラインナップ</h2>
     <div class="divider"></div>
-    <p class="sec-lead">オリジナルパッケージでお届けできる袋果子シリーズをご紹介します</p>
+    <p class="sec-lead">オリジナルパッケージでお届けできる<br class="sp-br">袋果子シリーズをご紹介します</p>
     <p class="product-pkg-note">※掲載写真は通常販売用のパッケージです。ご注文時はオリジナルデザインでお届けします。</p>
     <div class="product-list">
       <div class="product-card">
@@ -1022,8 +1050,8 @@
         <span class="sec-eyebrow">ORIGINAL PACKAGE</span>
         <h2 class="sec-title">オリジナルパッケージ</h2>
         <div class="divider"></div>
-        <p>袋の表面に企業ロゴ・社名・デザインを印刷したオリジナル仕様でお届けします。弊社側の表示項目（成分表示・製造者情報）は固定。デザインエリアをお客様に自由にご使用いただける形式です。</p>
-        <p>袋は白地の和紙風素材です。細かな文字がにじむ場合があるため、ご注文前に現物サンプルをご確認いただきます。</p>
+        <p>袋の表面に企業ロゴ・社名・デザインを印刷したオリジナル仕様でお届けします。<br class="sp-br">弊社側の表示項目（成分表示・製造者情報）は固定。<br class="sp-br">デザインエリアをお客様に自由にご使用いただける形式です。</p>
+        <p>袋は白地の和紙風素材です。<br class="sp-br">細かな文字がにじむ場合があるため、ご注文前に現物サンプルをご確認いただきます。</p>
         <div>
           <span class="badge">版代不要</span>
           <span class="badge">最小50袋〜</span>
@@ -1078,7 +1106,7 @@
         <tr>
           <th style="text-align:left">数量</th>
           <th>加算手数料</th>
-          <th>単価例（定価¥410の商品）</th>
+          <th>単価例<span class="th-sub">（定価¥410の商品）</span></th>
         </tr>
       </thead>
       <tbody>
@@ -1087,7 +1115,7 @@
         <tr><td>300袋</td><td>¥100</td><td>¥510</td></tr>
         <tr><td>200袋</td><td>¥150</td><td>¥560</td></tr>
         <tr><td>100袋</td><td>¥200</td><td>¥610</td></tr>
-        <tr><td>50〜99袋（最小ロット）</td><td>¥300</td><td>¥710</td></tr>
+        <tr><td>50〜99袋<span class="td-sub">（最小ロット）</span></td><td>¥300</td><td>¥710</td></tr>
       </tbody>
     </table>
 
