@@ -594,6 +594,54 @@
   }
   .price-note span { color: var(--brown); font-weight: bold; }
 
+  /* ── PRICE EXAMPLE ── */
+  .price-example {
+    margin-top: 40px;
+    border: 1px solid var(--gray);
+    background: var(--beige-light);
+    padding: 28px 32px;
+  }
+  .price-example-title {
+    font-size: 0.72em;
+    letter-spacing: 0.18em;
+    color: var(--brown-light);
+    margin-bottom: 16px;
+  }
+  .price-example-item {
+    padding: 16px 0;
+    border-bottom: 1px solid var(--gray);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px 16px;
+    align-items: center;
+  }
+  .price-example-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .price-example-item:first-of-type { padding-top: 0; }
+  .price-example-label {
+    font-size: 0.82em;
+    color: var(--text-sub);
+    line-height: 1.7;
+  }
+  .price-example-label strong { color: var(--text); }
+  .price-example-total {
+    font-size: 1.2em;
+    color: var(--brown);
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: right;
+  }
+  .price-example-total small {
+    font-size: 0.6em;
+    font-weight: normal;
+    color: var(--text-sub);
+    display: block;
+  }
+  @media (max-width: 720px) {
+    .price-example { padding: 20px 16px; }
+    .price-example-item { grid-template-columns: 1fr; gap: 4px; }
+    .price-example-total { text-align: left; }
+  }
+
   /* ── FLOW ── */
   .flow-section { background: var(--white); }
   .flow-list { list-style: none; margin-top: 48px; }
@@ -1164,7 +1212,7 @@
         <tr>
           <th style="text-align:left">数量</th>
           <th>加算手数料</th>
-          <th>単価例<span class="th-sub">（定価¥410の商品）</span></th>
+          <th>単価例<span class="th-sub">（袋果子1個あたり / 定価¥410の商品）</span></th>
         </tr>
       </thead>
       <tbody>
@@ -1202,6 +1250,32 @@
       <span>版代不要</span>　／　<span>送料無料</span>（北海道・離島を除く）<br>
       請求書・領収書の発行に対応しております。<br class="sp-br">ご注文時にお申し付けください。
     </p>
+
+    <div class="price-example">
+      <p class="price-example-title">PRICING EXAMPLE — 合計金額の目安</p>
+
+      <div class="price-example-item">
+        <div class="price-example-label">
+          <strong>① 定価¥410の商品を300袋・通常ver</strong><br>
+          単価¥410 ＋ 加算手数料¥100 ＝ ¥510 × 300袋
+        </div>
+        <div class="price-example-total">
+          ¥153,000
+          <small>（税別）</small>
+        </div>
+      </div>
+
+      <div class="price-example-item">
+        <div class="price-example-label">
+          <strong>② 定価¥460の商品を200袋・プレミアムver</strong><br>
+          単価¥460 ＋ 加算手数料¥150 ＝ ¥610 × 200袋 ＋ プレミアム印刷費¥30,000
+        </div>
+        <div class="price-example-total">
+          ¥152,000
+          <small>（税別）</small>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
