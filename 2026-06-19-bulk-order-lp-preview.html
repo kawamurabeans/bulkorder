@@ -821,6 +821,7 @@
 
   /* スマホ専用改行（デフォルト非表示） */
   .sp-br { display: none; }
+  .sp-hidden { display: inline; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
@@ -864,6 +865,7 @@
 
     /* スマホ専用改行を有効化 */
     .sp-br { display: inline; }
+    .sp-hidden { display: none; }
 
     /* オリジナルパッケージ説明文をSPで読みやすく（⑦） */
     .original-body p { font-size: 0.82em; line-height: 1.95; }
@@ -1043,7 +1045,7 @@
     <h2 class="sec-title">袋果子おすすめラインナップ</h2>
     <div class="divider"></div>
     <p class="sec-lead">オリジナルパッケージでお届けできる<br class="sp-br">袋果子シリーズをご紹介します</p>
-    <p class="product-pkg-note">※掲載写真は通常販売用のパッケージです。ご注文時はオリジナルデザインでお届けします。</p>
+    <p class="product-pkg-note">※掲載写真は通常販売用のパッケージです。<br class="sp-br">ご注文時はオリジナルデザインでお届けします。</p>
     <div class="product-list">
       <div class="product-card">
         <div class="product-img-ph">
@@ -1103,8 +1105,8 @@
         <span class="sec-eyebrow">ORIGINAL PACKAGE</span>
         <h2 class="sec-title">オリジナルパッケージ</h2>
         <div class="divider"></div>
-        <p>袋の表面に企業ロゴ・社名・デザインを印刷したオリジナル仕様でお届けします。<br class="sp-br">弊社側の表示項目（成分表示・製造者情報）は固定。<br class="sp-br">デザインエリアをお客様に自由にご使用いただける形式です。</p>
-        <p>袋は白地の和紙風素材です。<br class="sp-br">細かな文字がにじむ場合があるため、ご注文前に現物サンプルをご確認いただきます。</p>
+        <p>袋の表面に企業ロゴ・社名・デザインを印刷したオリジナル仕様でお届けします。<br class="sp-br"><br class="sp-br">弊社側の表示項目（成分表示・製造者情報）は固定。<br class="sp-br">デザインエリアをお客様に自由にご使用いただける形式です。</p>
+        <p>袋は白地の和紙風素材です。細かな文字がにじむ場合があるため、ご注文前に現物サンプルをご確認いただきます。</p>
         <div>
           <span class="badge">版代不要</span>
           <span class="badge">最小50袋〜</span>
@@ -1122,7 +1124,7 @@
     <span class="sec-eyebrow">TEMPLATE DOWNLOAD</span>
     <h2 class="sec-title">デザインテンプレート</h2>
     <div class="divider"></div>
-    <p class="sec-lead">印刷エリアの異なる2種類をご用意しています<br>Adobe Illustratorでロゴや社名を配置してお送りください</p>
+    <p class="sec-lead">印刷エリアの異なる2種類をご用意しています<br class="sp-br">Adobe Illustratorでロゴや社名を配置して<br class="sp-br">お送りください</p>
     <div class="template-grid" style="max-width: 640px; margin: 0 auto;">
       <div class="template-card">
         <div class="template-icon">📄</div>
@@ -1140,8 +1142,8 @@
       </div>
     </div>
     <div class="dl-note">
-      <span class="note-highlight">⚠ 文字・ロゴは必ずアウトライン化してご入稿ください</span>
-      <span class="note-sub">※ ダウンロードにはAdobe Illustratorが必要です　／　ご不明な点はお問い合わせください</span>
+      <span class="note-highlight">⚠ 文字・ロゴは必ずアウトライン化して<br class="sp-br">ご入稿ください</span>
+      <span class="note-sub">※ ダウンロードにはAdobe Illustratorが必要です<span class="sp-hidden">　／　</span><br class="sp-br">ご不明な点はお問い合わせください</span>
     </div>
   </div>
 </section>
@@ -1198,7 +1200,7 @@
 
     <p class="price-note">
       <span>版代不要</span>　／　<span>送料無料</span>（北海道・離島を除く）<br>
-      請求書・領収書の発行に対応しております。ご注文時にお申し付けください。
+      請求書・領収書の発行に対応しております。<br class="sp-br">ご注文時にお申し付けください。
     </p>
   </div>
 </section>
@@ -1224,7 +1226,7 @@
         <div class="flow-num"><span>STEP</span><span>2</span></div>
         <div class="flow-body">
           <span class="flow-tag tag-client">お客様</span>
-          <h3>デザインデータのご入稿　<small style="color:var(--text-sub);font-size:0.85em">（オリジナルパッケージの場合）</small></h3>
+          <h3>デザインデータのご入稿<br class="sp-br"><small style="color:var(--text-sub);font-size:0.85em">（オリジナルパッケージの場合）</small></h3>
           <p>テンプレートにロゴ・社名を配置したデータをお送りください。推奨形式：Adobe Illustrator（アウトライン化）</p>
         </div>
       </li>
@@ -1264,7 +1266,7 @@
     <span class="sec-eyebrow">SCHEDULE</span>
     <h2 class="sec-title">納品スケジュールの目安</h2>
     <div class="divider"></div>
-    <p class="sec-lead">ご発注日から<strong>最短22日間</strong>で納品いたします<br>余裕をもってご検討の場合は納品日の<strong>45日前</strong>にご相談ください</p>
+    <p class="sec-lead">ご発注日から<strong>最短22日間</strong>で納品いたします<br>余裕をもってご検討の場合は<br class="sp-br">納品日の<strong>45日前</strong>にご相談ください</p>
     <div class="timeline">
       <div class="tl-item"><div class="tl-day">DAY 1</div><div class="tl-title">ご発注・データ入稿</div><div class="tl-desc">発注数・商品内容の確定、デザインデータのご提出</div></div>
       <div class="tl-item"><div class="tl-day">DAY 3まで</div><div class="tl-title">データ調整・校正PDF送付</div><div class="tl-desc">弊社にてデータを確認し校正PDFをお送りします</div></div>
