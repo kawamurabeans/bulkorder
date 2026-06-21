@@ -827,6 +827,9 @@
     /* CTAボタンをheroと同じ縦並び中央に（⑨） */
     .cta-section .btn-primary { display: block; margin: 0 auto; text-align: center; }
     .cta-section .btn-outline { display: block; margin: 14px auto 0; text-align: center; }
+
+    /* iOS Safari等でfixed背景が破綻するため、スマホでは通常スクロール表示に */
+    .parallax-strip { background-attachment: scroll; background-position: center center; }
   }
 </style>
 </head>
@@ -1295,29 +1298,11 @@
 
 <footer>
   <p>
-    © 甘納豆かわむら　石川県金沢市野町2丁目24-7<br>
-    ※ このページはプレビュー用です。WordPressに貼り付ける用のHTMLは別ファイルをご参照ください。
+    © 甘納豆かわむら　石川県金沢市野町2丁目24-7
   </p>
 </footer>
 
 <script>
-// モバイル疑似パラレックス
-(function() {
-  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-  if (!isMobile) return;
-  const strips = document.querySelectorAll('.parallax-strip');
-  function updateParallax() {
-    strips.forEach(function(strip) {
-      const rect = strip.getBoundingClientRect();
-      const center = rect.top + rect.height / 2;
-      const offset = (window.innerHeight / 2 - center) * 0.3;
-      strip.style.backgroundPosition = 'center calc(50% + ' + offset + 'px)';
-    });
-  }
-  window.addEventListener('scroll', updateParallax, { passive: true });
-  updateParallax();
-})();
-
 (function() {
   const slides = document.querySelectorAll('.hero-slide');
   const dots = document.querySelectorAll('.hero-dot');
