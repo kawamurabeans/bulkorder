@@ -920,11 +920,12 @@
 
     /* 料金表をSPで詰めて縦罫線追加（⑧） */
     .price-table th, .price-table td { font-size: 0.66em; padding: 9px 5px; letter-spacing: 0; line-height: 1.45; }
-    .price-table td { border-right: 1px solid var(--gray); }
+    .price-table td { border-right: 1px solid var(--gray); text-align: center; }
     .price-table td:last-child { border-right: none; }
     .price-table th { border-right: 1px solid rgba(255,255,255,0.18); }
     .price-table th:last-child { border-right: none; }
     .price-table .th-sub, .price-table .td-sub { font-size: 0.82em; opacity: 0.85; }
+    .price-table td:first-child { text-align: center; }
 
     /* CTAボタンをheroと同じ縦並び中央に（⑨） */
     .cta-section .btn-primary { display: block; margin: 0 auto; text-align: center; }
