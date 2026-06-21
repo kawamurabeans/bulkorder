@@ -757,7 +757,7 @@
   /* ── PARALLAX STRIPS（全デバイスtransform方式）── */
   .parallax-strip {
     position: relative;
-    min-height: 260px;
+    min-height: 380px;
     overflow: hidden;
   }
   .parallax-inner {
@@ -1322,7 +1322,7 @@
       const rect = inner.parentElement.getBoundingClientRect();
       if (rect.bottom < 0 || rect.top > wh) return;
       const progress = (wh - rect.top) / (wh + rect.height); // 0〜1
-      const move = (progress - 0.5) * rect.height * 2.5;
+      const move = (progress - 0.5) * rect.height * 3.2;
       inner.style.transform = 'translate3d(0,' + move.toFixed(1) + 'px,0)';
     });
     ticking = false;
