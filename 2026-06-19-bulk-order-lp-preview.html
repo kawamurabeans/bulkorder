@@ -1319,7 +1319,7 @@
       const rect = inner.parentElement.getBoundingClientRect();
       if (rect.bottom < 0 || rect.top > wh) return;
       const progress = (wh - rect.top) / (wh + rect.height); // 0〜1
-      const move = (progress - 0.5) * rect.height * 0.4;
+      const move = (progress - 0.5) * rect.height * 0.7;
       inner.style.transform = 'translate3d(0,' + move.toFixed(1) + 'px,0)';
     });
     ticking = false;
