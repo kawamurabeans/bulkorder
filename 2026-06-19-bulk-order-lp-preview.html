@@ -574,14 +574,18 @@
     font-weight: normal;
     letter-spacing: 0.1em;
     text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.18);
   }
+  .price-table th:last-child { border-right: none; }
   .price-table td {
     padding: 14px 20px;
     font-size: 0.85em;
     border-bottom: 1px solid var(--gray);
+    border-right: 1px solid var(--gray);
     text-align: center;
     background: var(--white);
   }
+  .price-table td:last-child { border-right: none; }
   .price-table tr:last-child td {
     background: rgba(201,151,58,0.08);
     color: var(--brown);
@@ -1206,77 +1210,78 @@
     <span class="sec-eyebrow">PRICING</span>
     <h2 class="sec-title">料金・ロット数</h2>
     <div class="divider"></div>
-    <p class="sec-lead">オリジナルパッケージをご希望の場合は数量に応じた手数料が加算されます</p>
+    <p class="sec-lead">オリジナルパッケージは50袋から承ります<br>商品代金に下記の「パッケージ手数料」が加算されます</p>
 
-    <div style="display:grid; grid-template-columns:1fr auto; align-items:center; margin-bottom:8px; margin-top:32px;">
-      <span style="font-size:0.78em; letter-spacing:0.18em; color:var(--brown-light);">通常 ver</span>
+    <!-- 計算式 -->
+    <div style="background:var(--beige); border:1px solid var(--gray); padding:24px 28px; margin-bottom:48px; text-align:center;">
+      <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:16px;">ご注文金額の計算方法</p>
+      <p style="font-size:0.88em; color:var(--text); line-height:2; letter-spacing:0.04em;">
+        （ 商品定価 ＋ <strong>① 基本手数料</strong> ） × 数量<br>
+        ＋ <strong>② オプション費（プレミアム選択時のみ）</strong>
+      </p>
     </div>
+
+    <!-- ① 基本手数料 -->
+    <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:10px;">① 基本手数料（1袋あたり）</p>
     <table class="price-table" style="margin-top:0;">
       <thead>
         <tr>
           <th>数量</th>
-          <th>加算手数料</th>
-          <th>単価例<br class="sp-br"><span class="th-sub">（袋果子1個あたり / 定価¥410の商品）</span></th>
+          <th>1袋あたりの追加料金</th>
         </tr>
       </thead>
       <tbody>
-        <tr><td>500袋〜</td><td>¥0</td><td>¥410</td></tr>
-        <tr><td>400袋〜</td><td>¥50</td><td>¥460</td></tr>
-        <tr><td>300袋〜</td><td>¥100</td><td>¥510</td></tr>
-        <tr><td>200袋〜</td><td>¥150</td><td>¥560</td></tr>
-        <tr><td>100袋〜</td><td>¥200</td><td>¥610</td></tr>
-        <tr><td>50〜99袋<br class="sp-br"><span class="td-sub">（最小ロット）</span></td><td>¥300</td><td>¥710</td></tr>
+        <tr><td>500袋〜</td><td>＋¥0（手数料なし）</td></tr>
+        <tr><td>400袋〜499袋</td><td>＋¥50</td></tr>
+        <tr><td>300袋〜399袋</td><td>＋¥100</td></tr>
+        <tr><td>200袋〜299袋</td><td>＋¥150</td></tr>
+        <tr><td>100袋〜199袋</td><td>＋¥200</td></tr>
+        <tr><td>50袋〜99袋<br class="sp-br"><span class="td-sub">（最小受付ロット）</span></td><td>＋¥300</td></tr>
       </tbody>
     </table>
 
-    <div style="display:grid; grid-template-columns:1fr auto; align-items:center; margin-bottom:8px; margin-top:48px;">
-      <span style="font-size:0.78em; letter-spacing:0.18em; color:var(--brown-light);">プレミアム ver</span>
-      <span style="font-size:0.72em; color:var(--text-sub);">通常 ver の料金に加算されます</span>
+    <!-- ② プレミアム オプション -->
+    <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:10px; margin-top:48px;">② プレミアムver オプション</p>
+    <div style="border:1px solid var(--gray); background:var(--white); padding:24px 28px;">
+      <p style="font-size:0.82em; color:var(--text-sub); line-height:1.8; margin-bottom:16px;">① の基本手数料を含む合計金額に、以下の費用が加算されます。</p>
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px 16px; padding:16px 0; border-top:1px solid var(--gray);">
+        <div style="font-size:0.85em; color:var(--text-sub); line-height:1.8;">
+          <strong style="color:var(--text);">印刷エリア拡張費</strong><br>
+          袋数に関わらず、1案件ごとの一律固定費です
+        </div>
+        <div style="font-size:1.3em; color:var(--gold); font-weight:bold; white-space:nowrap; text-align:right;">＋¥30,000</div>
+      </div>
     </div>
-    <table class="price-table" style="margin-top:0;">
-      <thead>
-        <tr>
-          <th>対象</th>
-          <th>加算手数料</th>
-          <th>内容</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>全数量共通</td>
-          <td style="color:var(--gold); font-weight:bold;">+¥30,000</td>
-          <td style="font-size:0.8em; color:var(--text-sub);">印刷エリア拡張費</td>
-        </tr>
-      </tbody>
-    </table>
 
     <p class="price-note">
-      <span>版代不要</span>　／　<span>送料無料</span>（北海道・離島を除く）<br>
-      請求書・領収書の発行に対応しております。<br class="sp-br">ご注文時にお申し付けください。
+      <span>版代（印刷の型代）不要</span>　／　<span>送料無料</span>（北海道・離島を除く）<br>
+      ※ 商品代金（各商品の定価）は別途かかります<br>
+      請求書・領収書の発行に対応しております。ご注文時にお申し付けください。
     </p>
 
+    <!-- 計算例 -->
     <div class="price-example">
-      <p class="price-example-title">PRICING EXAMPLE — 合計金額の目安</p>
+      <p class="price-example-title" style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold;">PRICING EXAMPLE — 計算例（合計金額の目安）</p>
 
       <div class="price-example-item">
         <div class="price-example-label">
-          <strong>① 定価¥410の商品を300袋・通常ver</strong><br>
-          単価¥410 ＋ 加算手数料¥100 ＝ ¥510 × 300袋
+          <strong>例1：通常verで「能登大納言（定価¥460）」を300袋</strong><br>
+          （¥460 ＋ ①¥100） × 300袋
         </div>
         <div class="price-example-total">
-          ¥153,000
-          <small>（税別）</small>
+          ¥168,000
+          <small>（税別・送料無料）</small>
         </div>
       </div>
 
       <div class="price-example-item">
         <div class="price-example-label">
-          <strong>② 定価¥460の商品を200袋・プレミアムver</strong><br>
-          単価¥460 ＋ 加算手数料¥150 ＝ ¥610 × 200袋 ＋ プレミアム印刷費¥30,000
+          <strong>例2：プレミアムverで「石川県のだいず（定価¥410）」を200袋</strong><br>
+          （¥410 ＋ ①¥150） × 200袋 ＋ ②¥30,000
         </div>
         <div class="price-example-total">
-          ¥152,000
-          <small>（税別）</small>
+          ¥142,000
+          <small>（税別・送料無料）</small>
         </div>
       </div>
     </div>
