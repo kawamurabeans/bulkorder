@@ -787,6 +787,60 @@
     line-height: 1.9;
   }
 
+  /* ── FAQ ── */
+  .faq-section { background: var(--white); }
+  .faq-list { margin-top: 40px; }
+  .faq-item {
+    border-bottom: 1px solid var(--gray);
+  }
+  .faq-item:first-child { border-top: 1px solid var(--gray); }
+  .faq-q {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 22px 4px;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.92em;
+    color: var(--brown);
+    letter-spacing: 0.04em;
+    line-height: 1.7;
+    user-select: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q-label {
+    color: var(--gold);
+    font-size: 1em;
+    font-weight: bold;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+  .faq-q-text { flex: 1; }
+  .faq-q-arrow {
+    flex-shrink: 0;
+    color: var(--gold);
+    font-size: 0.8em;
+    margin-top: 3px;
+    transition: transform 0.25s;
+  }
+  details[open] .faq-q-arrow { transform: rotate(180deg); }
+  .faq-a {
+    display: flex;
+    gap: 16px;
+    padding: 0 4px 22px;
+    font-size: 0.85em;
+    color: var(--text-sub);
+    line-height: 1.95;
+  }
+  .faq-a-label {
+    color: var(--brown-light);
+    font-size: 1em;
+    font-weight: bold;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+  .faq-a-text { flex: 1; }
+
   /* ── CANCEL ── */
   .cancel-section { background: var(--beige-light); }
   .cancel-row {
@@ -1331,7 +1385,7 @@
         <div class="flow-body">
           <span class="flow-tag tag-us">弊社</span>
           <h3>校正PDF・サンプルのご確認</h3>
-          <p>弊社にてデータを確認し校正PDFをお送りします。実物サンプル袋（2個）もお届けします（初回無料）。</p>
+          <p>弊社にてデータを確認し校正PDFをお送りします。実物サンプル袋（2個）もお届けします（初回無料）。<br>※ データの校正・修正は最大3回までとなります。まとめてご確認・ご指示くださいませ。</p>
         </div>
       </li>
       <li class="flow-item">
@@ -1395,8 +1449,8 @@
         <p>現物サンプルの発送は初回のみ無料です。2回目以降は着払いとなります。対応は最大3回までとなります。</p>
       </div>
       <div class="note-card">
-        <h3>デザイン変更について</h3>
-        <p>ご入金（着金）確認後は制作を開始いたします。それ以降のデザイン変更はお受けできません。</p>
+        <h3>デザイン校正・修正について</h3>
+        <p>データの校正・修正は最大3回までとさせていただきます。スムーズな進行のため、まとめてご確認・ご指示いただきますようお願いいたします。また、ご入金（着金）確認後は制作を開始いたします。それ以降のデザイン変更はお受けできません。</p>
       </div>
       <div class="note-card">
         <h3>数量追加の締切について</h3>
@@ -1427,6 +1481,114 @@
       <div class="cancel-row"><div class="cancel-timing">当日</div><div class="cancel-fee">100%</div></div>
     </div>
     <p style="text-align:center; font-size:0.78em; color:var(--text-sub); margin-top:20px;">※ 天災などやむを得ない事情による場合は除きます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <span class="sec-eyebrow">FAQ</span>
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-q-label">Q</span>
+          <span class="faq-q-text">賞味期限はどのくらいですか？</span>
+          <span class="faq-q-arrow">▼</span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-a-label">A</span>
+          <span class="faq-a-text">製造日からおおよそ1ヶ月程度です。配布日から遠ざかりすぎないよう、イベントや配布日に近い納品日をご指定くださいませ。</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-q-label">Q</span>
+          <span class="faq-q-text">お支払い方法について教えてください。</span>
+          <span class="faq-q-arrow">▼</span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-a-label">A</span>
+          <span class="faq-a-text">銀行振込（前払い）にてお願いしております。実物サンプルのご確認後、請求書を発行いたします。ご入金（着金）の確認をもって製造開始となりますので、期日までにお振込みをお願いいたします。</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-q-label">Q</span>
+          <span class="faq-q-text">領収書や適格請求書（インボイス）の発行は可能ですか？</span>
+          <span class="faq-q-arrow">▼</span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-a-label">A</span>
+          <span class="faq-a-text">はい、可能です。当店は適格請求書発行事業者です。ご希望の場合は、ご注文時にお気軽にお申し付けください。</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-q-label">Q</span>
+          <span class="faq-q-text">複数箇所への分割配送（分納）は可能ですか？</span>
+          <span class="faq-q-arrow">▼</span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-a-label">A</span>
+          <span class="faq-a-text">原則として、1箇所への一括納品とさせていただいております。複数拠点への配送をご希望の場合は、別途送料および梱包手数料が発生する場合がございますので、ご相談ください。</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-q-label">Q</span>
+          <span class="faq-q-text">サンプル袋の中には、お菓子（中身）も入っていますか？</span>
+          <span class="faq-q-arrow">▼</span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-a-label">A</span>
+          <span class="faq-a-text">初回無料でお送りするサンプルは、印刷の色味や文字のにじみをご確認いただくための袋のみ（空袋）となります。お菓子の味をご確認されたい場合は、誠に恐れ入りますがオンラインストアや店頭にて通常商品をお買い求めください。</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-q-label">Q</span>
+          <span class="faq-q-text">Illustratorを持っていません。他の方法でデザインを入稿できますか？</span>
+          <span class="faq-q-arrow">▼</span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-a-label">A</span>
+          <span class="faq-a-text">原則としてAdobe Illustrator（.ai）でのご入稿をお願いしておりますが、高解像度の画像データ（JPEG / PNG等）でもお受けできる場合がございます。まずは一度ご相談ください。</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-q-label">Q</span>
+          <span class="faq-q-text">袋のサイズを教えてください。</span>
+          <span class="faq-q-arrow">▼</span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-a-label">A</span>
+          <span class="faq-a-text">幅140mm × 高さ160mm となります。テンプレートにも印刷エリアのサイズが明記されておりますので、ダウンロードのうえご確認ください。</span>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-q-label">Q</span>
+          <span class="faq-q-text">校正（デザイン確認・修正）は何回まで対応いただけますか？</span>
+          <span class="faq-q-arrow">▼</span>
+        </summary>
+        <div class="faq-a">
+          <span class="faq-a-label">A</span>
+          <span class="faq-a-text">データの校正・修正は最大3回までとさせていただいております。修正のご指示はまとめてお送りいただきますと、スムーズに進行できます。なお、ご入金（着金）確認後のデザイン変更はお受けできませんので、サンプルのご確認は早めにお願いいたします。</span>
+        </div>
+      </details>
+
+    </div>
   </div>
 </section>
 
