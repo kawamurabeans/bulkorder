@@ -937,6 +937,19 @@
     .cta-section .btn-primary { display: block; margin: 0 auto; text-align: center; }
     .cta-section .btn-outline { display: block; margin: 14px auto 0; text-align: center; }
 
+    /* PRICING：②オプション費の()書きを小さく・折り返し防止 */
+    .price-formula-option { font-size: 0.82em; white-space: nowrap; }
+
+    /* PRICING：④プレミアムオプション 縦積みレイアウト */
+    .premium-detail-grid {
+      grid-template-columns: 1fr !important;
+      gap: 12px !important;
+    }
+    .premium-detail-grid > div:last-child {
+      text-align: left !important;
+      font-size: 1.5em;
+    }
+
   }
 </style>
 </head>
@@ -1210,14 +1223,14 @@
     <span class="sec-eyebrow">PRICING</span>
     <h2 class="sec-title">料金・ロット数</h2>
     <div class="divider"></div>
-    <p class="sec-lead">オリジナルパッケージは50袋から承ります<br>商品代金に下記の「パッケージ手数料」が加算されます</p>
+    <p class="sec-lead">オリジナルパッケージは50袋から承ります<br>商品代金に下記の「パッケージ手数料」が<br class="sp-br">加算されます</p>
 
     <!-- 計算式 -->
     <div style="background:var(--beige); border:1px solid var(--gray); padding:24px 28px; margin-bottom:48px; text-align:center;">
       <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:16px;">ご注文金額の計算方法</p>
       <p style="font-size:0.88em; color:var(--text); line-height:2; letter-spacing:0.04em;">
         （ 商品定価 ＋ <strong>① 基本手数料</strong> ） × 数量<br>
-        ＋ <strong>② オプション費（プレミアム選択時のみ）</strong>
+        ＋ <strong>② オプション費<span class="price-formula-option">（プレミアム選択時のみ）</span></strong>
       </p>
     </div>
 
@@ -1243,8 +1256,8 @@
     <!-- ② プレミアム オプション -->
     <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:10px; margin-top:48px;">② プレミアムver オプション</p>
     <div style="border:1px solid var(--gray); background:var(--white); padding:24px 28px;">
-      <p style="font-size:0.82em; color:var(--text-sub); line-height:1.8; margin-bottom:16px;">① の基本手数料を含む合計金額に、以下の費用が加算されます。</p>
-      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px 16px; padding:16px 0; border-top:1px solid var(--gray);">
+      <p style="font-size:0.82em; color:var(--text-sub); line-height:1.8; margin-bottom:16px;">① の基本手数料を含む合計金額に、<br class="sp-br">以下の費用が加算されます。</p>
+      <div class="premium-detail-grid" style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px 16px; padding:16px 0; border-top:1px solid var(--gray);">
         <div style="font-size:0.85em; color:var(--text-sub); line-height:1.8;">
           <strong style="color:var(--text);">印刷エリア拡張費</strong><br>
           袋数に関わらず、1案件ごとの一律固定費です
@@ -1254,18 +1267,18 @@
     </div>
 
     <p class="price-note">
-      <span>版代（印刷の型代）不要</span>　／　<span>送料無料</span>（北海道・離島を除く）<br>
+      <span>版代（印刷の型代）不要</span><span class="sp-hidden">　／　</span><br class="sp-br"><span>送料無料</span>（北海道・離島を除く）<br>
       ※ 商品代金（各商品の定価）は別途かかります<br>
-      請求書・領収書の発行に対応しております。ご注文時にお申し付けください。
+      請求書・領収書の発行に対応しております。<br class="sp-br">ご注文時にお申し付けください。
     </p>
 
     <!-- 計算例 -->
     <div class="price-example">
-      <p class="price-example-title" style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold;">PRICING EXAMPLE — 計算例（合計金額の目安）</p>
+      <p class="price-example-title" style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold;">PRICING EXAMPLE<br class="sp-br">— 計算例（合計金額の目安）</p>
 
       <div class="price-example-item">
         <div class="price-example-label">
-          <strong>例1：通常verで「能登大納言（定価¥460）」を300袋</strong><br>
+          <strong>例1：通常verで<br class="sp-br">「能登大納言（定価¥460）」を300袋</strong><br>
           （¥460 ＋ ①¥100） × 300袋
         </div>
         <div class="price-example-total">
@@ -1276,7 +1289,7 @@
 
       <div class="price-example-item">
         <div class="price-example-label">
-          <strong>例2：プレミアムverで「石川県のだいず（定価¥410）」を200袋</strong><br>
+          <strong>例2：プレミアムverで<br class="sp-br">「石川県のだいず（定価¥410）」を200袋</strong><br>
           （¥410 ＋ ①¥150） × 200袋 ＋ ②¥30,000
         </div>
         <div class="price-example-total">
