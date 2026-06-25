@@ -975,6 +975,12 @@
     .sp-br { display: inline; }
     .sp-hidden { display: none; }
 
+    /* SP全体の文字を少し読みやすく */
+    body { -webkit-font-smoothing: antialiased; }
+    p, li, td, th, .sec-lead, .about-lead { font-weight: 400; letter-spacing: 0.03em; }
+    .sec-title, h3 { font-weight: 500; }
+    .note-highlight, .faq-q-text { font-weight: 500; }
+
     /* オリジナルパッケージ説明文をSPで読みやすく（⑦） */
     .original-body p { font-size: 0.82em; line-height: 1.95; }
 
@@ -1054,7 +1060,7 @@
     <p class="hero-sub">50袋から承ります　／　オリジナルパッケージ対応　／　<span class="hero-sub-br"></span>初期費用不要（版代無料）</p>
     <a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="btn-primary" target="_blank">ご相談はこちら</a>
     <a href="#template" class="btn-outline">データ入稿について</a>
-    <p style="font-size:0.72em; color:rgba(255,255,255,0.65); margin-top:10px; letter-spacing:0.06em;">JPEG・PNG・PDF・Illustratorなどお手持ちのデータで大丈夫です</p>
+    <p style="font-size:0.72em; color:rgba(255,255,255,0.65); margin-top:10px; letter-spacing:0.06em;">JPEG・PNG・PDF・Illustratorなど<br class="sp-br">お手持ちのデータで大丈夫です</p>
   </div>
   <div class="hero-dots">
     <button class="hero-dot active" data-index="0"></button>
@@ -1273,7 +1279,7 @@
       </div>
       <div style="background:rgba(255,255,255,0.06); padding:20px 24px; font-size:0.82em; line-height:2; color:rgba(255,255,255,0.72);">
         <p style="margin:0;"><strong style="color:var(--white);">対応形式</strong>　JPEG・PNG・PDF　など</p>
-        <p style="margin:0;">※ できるだけ高解像度のデータをお送りください</p>
+        <p style="margin:0;">※ できるだけ高解像度のデータを<br class="sp-br">お送りください</p>
         <p style="margin:0;">※ 金色・銀色は印刷に入れられません</p>
       </div>
     </div>
@@ -1303,7 +1309,7 @@
         </div>
       </div>
       <div style="font-size:0.8em; color:rgba(255,255,255,0.6); line-height:2; text-align:center;">
-        <p style="margin:0;">⚠ 文字・ロゴは必ずアウトライン化してご入稿ください</p>
+        <p style="margin:0;">⚠ 文字・ロゴは必ずアウトライン化して<br class="sp-br">ご入稿ください</p>
         <p style="margin:0;">※ テンプレートのご利用にはAdobe Illustratorが必要です</p>
       </div>
     </div>
