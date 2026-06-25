@@ -984,11 +984,13 @@
     .method02-note { margin-bottom: 36px !important; }
     .method02-grid { margin-bottom: 32px !important; }
 
-    /* SP全体の文字を少し読みやすく */
-    body { -webkit-font-smoothing: antialiased; }
-    p, li, td, th, .sec-lead, .about-lead { font-weight: 400; letter-spacing: 0.03em; }
-    .sec-title, h3 { font-weight: 500; }
-    .note-highlight, .faq-q-text { font-weight: 500; }
+    /* SP全体の文字を読みやすく */
+    body { -webkit-font-smoothing: antialiased; font-size: 105%; }
+    p, li, span, .sec-lead, .about-lead { font-weight: 500; letter-spacing: 0.04em; line-height: 2; }
+    td, th { font-weight: 500; }
+    .sec-title { font-size: 1.35em; font-weight: 600; }
+    h3 { font-weight: 600; }
+    .note-highlight, .faq-q-text { font-weight: 600; }
 
     /* オリジナルパッケージ説明文をSPで読みやすく（⑦） */
     .original-body p { font-size: 0.82em; line-height: 1.95; }
