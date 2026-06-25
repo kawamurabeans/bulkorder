@@ -930,6 +930,7 @@
   /* スマホ専用改行（デフォルト非表示） */
   .sp-br { display: none; }
   .sp-hidden { display: inline; }
+  .sp-method-divider { display: none; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
@@ -974,6 +975,14 @@
     /* スマホ専用改行を有効化 */
     .sp-br { display: inline; }
     .sp-hidden { display: none; }
+
+    /* METHOD01 タイトル下仕切り線（SP限定） */
+    .sp-method-divider { display: block; height: 1px; background: rgba(255,255,255,0.25); margin: 0 0 24px; }
+
+    /* METHOD02 要素間の余白をSPで広げる */
+    .method02-desc { margin-bottom: 28px !important; }
+    .method02-note { margin-bottom: 36px !important; }
+    .method02-grid { margin-bottom: 32px !important; }
 
     /* SP全体の文字を少し読みやすく */
     body { -webkit-font-smoothing: antialiased; }
@@ -1258,7 +1267,8 @@
     <!-- ── ① 画像データ ── -->
     <div style="border: 1px solid rgba(255,255,255,0.18); padding: 40px 36px 36px; margin-bottom: 32px;">
       <p style="font-size:0.7em; letter-spacing:0.3em; color:var(--gold); margin-bottom:12px;">METHOD 01</p>
-      <h3 style="font-size:1.15em; font-weight:normal; letter-spacing:0.12em; color:var(--white); margin-bottom:20px;">画像データをそのまま送る</h3>
+      <h3 style="font-size:1.15em; font-weight:normal; letter-spacing:0.12em; color:var(--white); margin-bottom:16px;">画像データをそのまま送る</h3>
+      <div class="sp-method-divider"></div>
       <p style="font-size:0.88em; line-height:2; color:rgba(255,255,255,0.8); margin-bottom:24px;">
         ロゴ・社名の画像をお送りいただくだけで大丈夫です<br>
         弊社にて袋への配置・調整を行います
@@ -1287,15 +1297,16 @@
     <!-- ── ② Illustratorデータ ── -->
     <div style="border: 1px solid rgba(255,255,255,0.18); padding: 40px 36px 36px; margin-bottom: 40px;">
       <p style="font-size:0.7em; letter-spacing:0.3em; color:var(--gold); margin-bottom:12px;">METHOD 02</p>
-      <h3 style="font-size:1.15em; font-weight:normal; letter-spacing:0.12em; color:var(--white); margin-bottom:20px;">Illustratorデータで入稿する</h3>
-      <p style="font-size:0.88em; line-height:2; color:rgba(255,255,255,0.8); margin-bottom:16px;">
+      <h3 style="font-size:1.15em; font-weight:normal; letter-spacing:0.12em; color:var(--white); margin-bottom:16px;">Illustratorデータで入稿する</h3>
+      <div class="sp-method-divider"></div>
+      <p class="method02-desc" style="font-size:0.88em; line-height:2; color:rgba(255,255,255,0.8); margin-bottom:16px;">
         テンプレートにロゴ・社名を配置したデータをそのままご入稿いただけます<br>
         印刷エリアの異なる2種類のテンプレートをご用意しています
       </p>
-      <div style="background:rgba(212,175,55,0.12); border-left:2px solid var(--gold); padding:14px 18px; margin-bottom:24px; font-size:0.82em; line-height:1.9; color:rgba(255,255,255,0.8);">
+      <div class="method02-note" style="background:rgba(212,175,55,0.12); border-left:2px solid var(--gold); padding:14px 18px; margin-bottom:24px; font-size:0.82em; line-height:1.9; color:rgba(255,255,255,0.8);">
         Illustratorでのご入稿は<strong style="color:var(--gold);">納期が早まりやすく</strong>、<br class="sp-br">お客様のイメージをより的確に再現できます
       </div>
-      <div class="template-grid" style="max-width: 600px; margin: 0 auto 24px;">
+      <div class="template-grid method02-grid" style="max-width: 600px; margin: 0 auto 24px;">
         <div class="template-card">
           <img src="images/template_standard.png" alt="通常ver 印刷エリアイメージ" style="width:100%; height:auto; display:block; margin-bottom:16px; border-radius:2px;">
           <h3>通常 ver</h3>
