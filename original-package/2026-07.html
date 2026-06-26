@@ -983,6 +983,9 @@
     /* METHOD01 タイトル下仕切り線（SP限定） */
     .sp-method-divider { display: block; height: 1px; background: rgba(255,255,255,0.25); margin: 0 0 24px; }
 
+    /* ③ 対応形式の※注意書きをSPで小さく */
+    .note-sm-sp { font-size: 0.86em; }
+
     /* METHOD02 要素間の余白をSPで広げる */
     .method02-desc { margin-bottom: 28px !important; }
     .method02-note { margin-bottom: 36px !important; }
@@ -1279,7 +1282,7 @@
       <h3 style="font-size:1.15em; font-weight:normal; letter-spacing:0.12em; color:var(--white); margin-bottom:16px;">画像データをそのまま送る</h3>
       <div class="sp-method-divider"></div>
       <p style="font-size:0.88em; line-height:2; color:rgba(255,255,255,0.8); margin-bottom:24px;">
-        ロゴ・社名の画像をお送りいただくだけで大丈夫です<br>
+        ロゴ・社名の画像を<br class="sp-br">お送りいただくだけで大丈夫です<br>
         弊社にて袋への配置・調整を行います
       </p>
       <div class="template-grid" style="max-width: 600px; margin: 0 auto 24px;">
@@ -1287,7 +1290,7 @@
           <img src="images/template_standard.png" alt="通常ver 印刷エリアイメージ" style="width:100%; height:auto; display:block; margin-bottom:16px; border-radius:2px;">
           <h3>通常 ver</h3>
           <p>袋前面への印刷スペースが設けられたタイプです。はじめてのオリジナルパッケージにおすすめです。</p>
-          <p style="color:rgba(255,255,255,0.72); font-size:0.75em; margin-bottom:0;">オモテ面は中央スペースのみ印刷可能<br>＋ 裏面にミニメッセージスペースあり</p>
+          <p style="color:rgba(255,255,255,0.72); font-size:0.75em; margin-bottom:0;">オモテ面は中央スペースのみ印刷可能<br class="sp-br">＋ 裏面にミニメッセージスペースあり</p>
         </div>
         <div class="template-card" style="border: 1px solid var(--gold);">
           <img src="images/template_premium.png" alt="プレミアムver 印刷エリアイメージ" style="width:100%; height:auto; display:block; margin-bottom:16px; border-radius:2px;">
@@ -1298,8 +1301,10 @@
       </div>
       <div style="background:rgba(255,255,255,0.06); padding:20px 24px; font-size:0.82em; line-height:2; color:rgba(255,255,255,0.72);">
         <p style="margin:0;"><strong style="color:var(--white);">対応形式</strong>　JPEG・PNG・PDF　など</p>
-        <p style="margin:0;">※ できるだけ高解像度のデータを<br class="sp-br">お送りください</p>
-        <p style="margin:0;">※ 金色・銀色は印刷に入れられません</p>
+        <div class="note-sm-sp">
+          <p style="margin:0;">※ できるだけ高解像度の<br class="sp-br">データをお送りください</p>
+          <p style="margin:0;">※ 金色・銀色は印刷に入れられません</p>
+        </div>
       </div>
     </div>
 
@@ -1309,18 +1314,18 @@
       <h3 style="font-size:1.15em; font-weight:normal; letter-spacing:0.12em; color:var(--white); margin-bottom:16px;">Illustratorデータで入稿する</h3>
       <div class="sp-method-divider"></div>
       <p class="method02-desc" style="font-size:0.88em; line-height:2; color:rgba(255,255,255,0.8); margin-bottom:16px;">
-        テンプレートにロゴ・社名を配置したデータをそのままご入稿いただけます<br>
-        印刷エリアの異なる2種類のテンプレートをご用意しています
+        テンプレートにロゴ・社名を配置した<br class="sp-br">データをそのままご入稿いただけます。<br>
+        印刷エリアの異なる2種類の<br class="sp-br">テンプレートをご用意しています。
       </p>
       <div class="method02-note" style="background:rgba(212,175,55,0.12); border-left:2px solid var(--gold); padding:14px 18px; margin-bottom:24px; font-size:0.82em; line-height:1.9; color:rgba(255,255,255,0.8);">
-        Illustratorでのご入稿は<strong style="color:var(--gold);">納期が早まりやすく</strong>、<br class="sp-br">お客様のイメージをより的確に再現できます
+        Illustratorでのご入稿は<strong style="color:var(--gold);">納期が早まりやすく</strong>、お客様のイメージをより的確に再現できます
       </div>
       <div class="template-grid method02-grid" style="max-width: 600px; margin: 0 auto 24px;">
         <div class="template-card">
           <img src="images/template_standard.png" alt="通常ver 印刷エリアイメージ" style="width:100%; height:auto; display:block; margin-bottom:16px; border-radius:2px;">
           <h3>通常 ver</h3>
           <p>袋前面への印刷スペースが設けられたテンプレートです。はじめてのオリジナルパッケージにおすすめです。</p>
-          <p style="color:rgba(255,255,255,0.72); font-size:0.75em; margin-bottom:20px;">オモテ面は中央スペースのみ印刷可能<br>＋ 裏面にミニメッセージスペースあり</p>
+          <p style="color:rgba(255,255,255,0.72); font-size:0.75em; margin-bottom:20px;">オモテ面は中央スペースのみ印刷可能<br class="sp-br">＋ 裏面にミニメッセージスペースあり</p>
           <a class="btn-dl" href="https://drive.google.com/uc?export=download&id=1uAFzGhHm7y0A6f8sEcjyyOq1OA3Y4fdb" target="_blank">ダウンロード（.ai）</a>
         </div>
         <div class="template-card" style="border: 1px solid var(--gold);">
@@ -1337,7 +1342,7 @@
       </div>
     </div>
 
-    <p style="text-align:center; font-size:0.82em; color:rgba(255,255,255,0.55); letter-spacing:0.06em;">どちらの方法でもご不明な点はお気軽にご相談ください</p>
+    <p style="text-align:center; font-size:0.82em; color:rgba(255,255,255,0.55); letter-spacing:0.06em;">どちらの方法でもご不明な点は<br class="sp-br">お気軽にご相談ください</p>
     <div style="text-align:center; margin-top:24px;">
       <a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="btn-primary" target="_blank" style="font-size:1em; font-weight:bold; letter-spacing:0.18em; padding:16px 56px;">ご相談はこちら</a>
     </div>
