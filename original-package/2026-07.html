@@ -976,6 +976,9 @@
     /* テンプレートカードのSP横パディングを縮めてテキストを1行に収める */
     .template-card { padding: 28px 14px; }
 
+    /* METHODボックスの横パディングをSPで縮小 */
+    .method-box { padding-left: 20px !important; padding-right: 20px !important; }
+
     /* テンプレート説明文のぶら下がり改善 */
     .template-card p { text-wrap: balance; }
 
@@ -1280,7 +1283,7 @@
     <p class="sec-lead">2つの方法でデータをご入稿いただけます<br class="sp-br">お手持ちの環境に合わせてお選びください</p>
 
     <!-- ── ① 画像データ ── -->
-    <div style="border: 1px solid rgba(255,255,255,0.18); padding: 40px 36px 36px; margin-bottom: 32px;">
+    <div class="method-box" style="border: 1px solid rgba(255,255,255,0.18); padding: 40px 36px 36px; margin-bottom: 32px;">
       <p style="font-size:0.7em; letter-spacing:0.3em; color:var(--gold); margin-bottom:12px;">METHOD 01</p>
       <h3 style="font-size:1.15em; font-weight:normal; letter-spacing:0.12em; color:var(--white); margin-bottom:16px;">画像データをそのまま送る</h3>
       <div class="sp-method-divider"></div>
@@ -1312,7 +1315,7 @@
     </div>
 
     <!-- ── ② Illustratorデータ ── -->
-    <div style="border: 1px solid rgba(255,255,255,0.18); padding: 40px 36px 36px; margin-bottom: 40px;">
+    <div class="method-box" style="border: 1px solid rgba(255,255,255,0.18); padding: 40px 36px 36px; margin-bottom: 40px;">
       <p style="font-size:0.7em; letter-spacing:0.3em; color:var(--gold); margin-bottom:12px;">METHOD 02</p>
       <h3 style="font-size:1.15em; font-weight:normal; letter-spacing:0.12em; color:var(--white); margin-bottom:16px;">Illustratorデータで入稿する</h3>
       <div class="sp-method-divider"></div>
