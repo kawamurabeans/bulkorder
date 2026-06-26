@@ -699,6 +699,18 @@
     color: var(--text-sub);
     line-height: 1.9;
   }
+  .flow-note-box {
+    margin-top: 12px;
+    background: var(--beige);
+    border-left: 2px solid var(--brown-light);
+    padding: 14px 16px;
+    font-size: 0.8em;
+    line-height: 1.85;
+    color: var(--text-sub);
+  }
+  .flow-note-box p { margin: 0; }
+  .flow-note-box p + p { margin-top: 6px; }
+
   .flow-body .flow-tag {
     display: inline-block;
     font-size: 0.7em;
@@ -1502,7 +1514,12 @@
         <div class="flow-body">
           <span class="flow-tag tag-us">弊社</span>
           <h3>校正PDF・サンプルのご確認</h3>
-          <p>弊社にてデータを確認し校正PDFをお送りします。実物サンプル袋もお届けします。<br><br><span style="line-height:1.8;">※ データの校正・修正は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。<br>※ サンプル発送の対応料は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。<br>なお、送料（郵便、ヤマト運輸等）は<strong>初回のみ弊社負担</strong>、<strong>2回目以降はお客様着払い</strong>となります。</span></p>
+          <p>弊社にてデータを確認し校正PDFをお送りします。実物サンプル袋もお届けします。</p>
+          <div class="flow-note-box">
+            <p>※ データの校正・修正は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。</p>
+            <p>※ サンプル発送の対応料は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。</p>
+            <p>なお、送料（郵便、ヤマト運輸等）は<strong>初回のみ弊社負担</strong>、<strong>2回目以降はお客様着払い</strong>となります。</p>
+          </div>
         </div>
       </li>
       <li class="flow-item">
