@@ -765,21 +765,25 @@
   .notes-section { background: var(--white); }
   .notes-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    grid-template-columns: 1fr;
+    gap: 16px;
     margin-top: 40px;
   }
   .note-card {
-    border-left: 2px solid var(--brown);
+    border-left: 2px solid rgba(65,33,7,0.95);
     padding: 20px 24px;
     background: var(--beige-light);
   }
   .note-card h3 {
     font-size: 0.88em;
-    font-weight: normal;
+    font-weight: bold;
     color: var(--brown);
     letter-spacing: 0.06em;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+    border-bottom: 1px solid var(--gray);
+    padding-right: 16px;
   }
   .note-card p {
     font-size: 0.8em;
@@ -1010,6 +1014,9 @@
 
     /* PRICING：②オプション費の()書きを小さく・折り返し防止 */
     .price-formula-option { font-size: 0.82em; white-space: nowrap; }
+
+    /* PRICING：計算式のフォントをSPで縮小 */
+    .price-formula-main { font-size: 0.76em !important; }
 
     /* PRICING：④プレミアムオプション 縦積みレイアウト */
     .premium-detail-grid {
@@ -1348,9 +1355,12 @@
     <!-- 計算式 -->
     <div style="background:var(--beige); border:1px solid var(--gray); padding:24px 28px; margin-bottom:48px; text-align:center;">
       <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:16px;">ご注文金額の計算方法</p>
-      <p style="font-size:0.88em; color:var(--text); line-height:2; letter-spacing:0.04em;">
-        （ 商品定価 ＋ <strong>① 基本手数料</strong> ） × 数量<br>
-        ＋ <strong>② オプション費<span class="price-formula-option">（プレミアム選択時のみ）</span></strong>
+      <p class="price-formula-main" style="font-size:1.18em; color:var(--text); line-height:2; letter-spacing:0.06em; font-weight:bold;">
+        （ 商品定価 ＋ ① 基本手数料 ） × 数量
+      </p>
+      <hr style="border:none; border-top:1px solid var(--gray); margin:14px 0;">
+      <p style="font-size:0.78em; color:var(--text-sub); line-height:1.8; letter-spacing:0.02em;">
+        ※ プレミアムver選択時は<strong>② オプション費</strong>、<br class="sp-br">修正・サンプル追加時は<strong>③ 追加対応費</strong>が<br class="sp-br">加算されます（詳細は下記）
       </p>
     </div>
 
@@ -1374,7 +1384,7 @@
     </table>
 
     <!-- ② プレミアム オプション -->
-    <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:10px; margin-top:48px;">② プレミアムver オプション</p>
+    <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:10px; margin-top:48px;">② プレミアムver オプション <span style="font-weight:normal; letter-spacing:0; font-size:0.9em; color:var(--text-sub);">（ 選択時のみ ）</span></p>
     <div style="border:1px solid var(--gray); background:var(--white); padding:24px 28px;">
       <p style="font-size:0.82em; color:var(--text-sub); line-height:1.8; margin-bottom:16px;">① の基本手数料を含む合計金額に、<br class="sp-br">以下の費用が加算されます。</p>
       <div class="premium-detail-grid" style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px 16px; padding:16px 0; border-top:1px solid var(--gray);">
@@ -1386,9 +1396,22 @@
       </div>
     </div>
 
+    <!-- ③ デザイン修正・サンプル発送追加対応費 -->
+    <p style="font-size:0.88em; letter-spacing:0.2em; color:var(--brown-light); font-weight:bold; margin-bottom:10px; margin-top:48px;">③ デザイン修正・サンプル発送追加対応費 <span style="font-weight:normal; letter-spacing:0; font-size:0.9em; color:var(--text-sub);">（ 発生時のみ ）</span></p>
+    <div style="border:1px solid var(--gray); background:var(--white); padding:24px 28px;">
+      <p style="font-size:0.82em; color:var(--text-sub); line-height:1.8; margin-bottom:16px;">3回までの無料枠を超えてご対応する場合</p>
+      <div style="display:grid; grid-template-columns:1fr auto; align-items:center; gap:8px 16px; padding:16px 0; border-top:1px solid var(--gray); border-bottom:1px solid var(--gray); margin-bottom:16px;">
+        <div style="font-size:1em; color:var(--text-sub); line-height:1.8;">
+          <strong style="color:var(--text);">デザイン修正・サンプル発送いずれも4回目以降は</strong>
+        </div>
+        <div style="font-size:1.3em; color:var(--gold); font-weight:bold; white-space:nowrap; text-align:right;">＋¥5,000/回</div>
+      </div>
+      <p style="font-size:0.78em; color:var(--text-sub); line-height:1.8;">なお、サンプルの送料（郵便、ヤマト運輸等）は初回のみ弊社負担、2回目以降はお客様着払いとなります。</p>
+    </div>
+
     <p class="price-note">
       <span>版代（印刷の型代）不要</span><span class="sp-hidden">　／　</span><br class="sp-br"><span>送料無料</span>（北海道・離島を除く）<br>
-      ※ 商品代金（各商品の定価）は別途かかります<br>
+      ※ 複数拠点への配送をご希望の場合は、別途送料および梱包手数料が発生する場合がございます。<br>
       請求書・領収書の発行に対応しております。<br class="sp-br">ご注文時にお申し付けください。
     </p>
 
@@ -1417,6 +1440,17 @@
           <small>（税別・送料無料）</small>
         </div>
       </div>
+
+      <div class="price-example-item">
+        <div class="price-example-label">
+          <strong>例3：通常verで<br class="sp-br">「能登大納言（定価¥460）」を300袋<br class="sp-br">＋ デザイン修正追加1回・サンプル発送追加1回</strong><br>
+          （¥460 ＋ ①¥100） × 300袋 ＋ ③¥5,000 × 2
+        </div>
+        <div class="price-example-total">
+          ¥178,000
+          <small>（税別・送料無料）</small>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1435,7 +1469,7 @@
         <div class="flow-body">
           <span class="flow-tag tag-client">お客様</span>
           <h3>お問い合わせ・お見積もり</h3>
-          <p>商品・数量・ご希望の納品日をお知らせください。お見積もりは無料です。</p>
+          <p>商品・数量・ご希望の納品日をお知らせください。お見積もりは<strong>無料</strong>です。</p>
         </div>
       </li>
       <li class="flow-item">
@@ -1443,7 +1477,7 @@
         <div class="flow-body">
           <span class="flow-tag tag-client">お客様</span>
           <h3>デザインデータのご入稿<br class="sp-br"><small style="color:var(--text-sub);font-size:0.85em">（オリジナルパッケージの場合）</small></h3>
-          <p>ロゴ・社名のデータをお送りください。JPEG・PNG・PDF・Illustratorなどお手持ちの形式で大丈夫です。弊社にて配置・調整を行います。</p>
+          <p>ロゴ・社名のデータをお送りください。<strong>JPEG・PNG・PDF・Illustrator</strong>などお手持ちの形式で大丈夫です。弊社にて配置・調整を行います。</p>
         </div>
       </li>
       <li class="flow-item">
@@ -1451,15 +1485,15 @@
         <div class="flow-body">
           <span class="flow-tag tag-us">弊社</span>
           <h3>校正PDF・サンプルのご確認</h3>
-          <p>弊社にてデータを確認し校正PDFをお送りします。実物サンプル袋（2個）もお届けします（初回無料）。<br>※ データの校正・修正は最大3回までとなります。まとめてご確認・ご指示くださいませ。</p>
+          <p>弊社にてデータを確認し校正PDFをお送りします。実物サンプル袋もお届けします。<br><br><span style="line-height:1.8;">※ データの校正・修正は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。<br>※ サンプル発送の対応料は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。<br>なお、送料（郵便、ヤマト運輸等）は<strong>初回のみ弊社負担</strong>、<strong>2回目以降はお客様着払い</strong>となります。</span></p>
         </div>
       </li>
       <li class="flow-item">
         <div class="flow-num"><span>STEP</span><span>4</span></div>
         <div class="flow-body">
           <span class="flow-tag tag-client">お客様</span>
-          <h3>ご承諾・お振込み</h3>
-          <p>サンプルをご確認後、承諾のご連絡とお振込みをお願いいたします。<br>※ 着金確認後のデザイン変更はできません</p>
+          <h3>ご承諾・お振込</h3>
+          <p>サンプルの最終確認後、<strong>承諾のご連絡とお振込</strong>をお願いいたします。<br><strong>※ お振込確認後のデザイン変更はできません</strong></p>
         </div>
       </li>
       <li class="flow-item">
@@ -1467,7 +1501,7 @@
         <div class="flow-body">
           <span class="flow-tag tag-us">弊社</span>
           <h3>製造・発送</h3>
-          <p>着金確認後に製造を開始し、ヤマト運輸にてお届けします。</p>
+          <p><strong><u>お振込確認後に製造を開始し、</u></strong>ヤマト運輸にてお届けします。</p>
         </div>
       </li>
     </ul>
@@ -1485,11 +1519,11 @@
     <p class="sec-lead">ご発注日から<strong>最短22日間</strong>で納品いたします<br>余裕をもってご検討の場合は<br class="sp-br">納品日の<strong>45日前</strong>にご相談ください</p>
     <div class="timeline">
       <div class="tl-item"><div class="tl-day">DAY 1</div><div class="tl-title">ご発注・データ入稿</div><div class="tl-desc">発注数・商品内容の確定、デザインデータのご提出</div></div>
-      <div class="tl-item"><div class="tl-day">DAY 3まで</div><div class="tl-title">データ調整・校正PDF送付</div><div class="tl-desc">弊社にてデータを確認し校正PDFをお送りします</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 3まで</div><div class="tl-title">データ調整・校正PDF送付</div><div class="tl-desc">弊社にてデータを確認し校正PDFをお送りします<br>※ データの校正・修正は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。</div></div>
       <div class="tl-item"><div class="tl-day">DAY 7まで</div><div class="tl-title">校正PDFのご確認・承認</div><div class="tl-desc">内容をご確認のうえ、承認をご連絡ください</div></div>
-      <div class="tl-item"><div class="tl-day">DAY 8</div><div class="tl-title">サンプル袋・請求書の発送</div><div class="tl-desc">ヤマト運輸にて発送いたします</div></div>
-      <div class="tl-item"><div class="tl-day">DAY 10〜12</div><div class="tl-title">ご承認・お振込み</div><div class="tl-desc">袋の印刷前であればデザイン修正が可能です<br>※ この時点以降、数量の追加はできません</div></div>
-      <div class="tl-item"><div class="tl-day">DAY 13</div><div class="tl-title">製造開始</div><div class="tl-desc">着金確認後、袋の印刷・豆炊き準備を開始します</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 8</div><div class="tl-title">サンプル袋・請求書の発送</div><div class="tl-desc">ヤマト運輸にて発送いたします<br>※ サンプル発送の対応料は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。<br>なお、送料（郵便、ヤマト運輸等）は<strong>初回のみ弊社負担</strong>、<strong>2回目以降はお客様着払い</strong>となります。</div></div>
+      <div class="tl-item"><div class="tl-day">DAY 10〜12</div><div class="tl-title">ご承認・お振込</div><div class="tl-desc">袋の印刷前であればデザイン修正が可能です<br><strong>※ この時点以降、数量の追加はできません</strong></div></div>
+      <div class="tl-item"><div class="tl-day">DAY 13</div><div class="tl-title">製造開始</div><div class="tl-desc"><strong>お振込確認後、袋の印刷・豆炊き準備を開始します</strong></div></div>
       <div class="tl-item"><div class="tl-day">DAY 14〜20</div><div class="tl-title">製造・梱包</div><div class="tl-desc">商品の製造・品質確認・梱包作業を行います</div></div>
       <div class="tl-item highlight"><div class="tl-day">DAY 21</div><div class="tl-title">発送</div><div class="tl-desc">ヤマト運輸にて発送いたします</div></div>
       <div class="tl-item highlight"><div class="tl-day">DAY 22</div><div class="tl-title">納品完了</div><div class="tl-desc">※ 地域により異なります</div></div>
@@ -1508,27 +1542,24 @@
     <div class="notes-grid">
       <div class="note-card">
         <h3>袋の素材について</h3>
-        <p>袋は白地の和紙風素材のため、細かな文字がにじむ場合があります。事前に現物サンプルでご確認いただいてから本制作に進みます。</p>
-      </div>
-      <div class="note-card">
-        <h3>サンプルの発送について</h3>
-        <p>現物サンプルの発送は初回のみ無料です。2回目以降は着払いとなります。対応は最大3回までとなります。</p>
+        <p>袋は白地の和紙風素材のため、<strong>細かな文字がにじむ場合があります。</strong><br>また、当社では業務用インクジェットプリンターを用いて印刷を行うため、<br>大手菓子メーカーの大量生産型の印刷仕上がりとは異なるものになっております。<br>お客様のイメージとのズレがないように、<strong>事前に現物サンプルでご確認</strong>いただいてから本制作に進みます。</p>
       </div>
       <div class="note-card">
         <h3>デザイン校正・修正について</h3>
-        <p>データの校正・修正は最大3回までとさせていただきます。スムーズな進行のため、まとめてご確認・ご指示いただきますようお願いいたします。また、ご入金（着金）確認後は制作を開始いたします。それ以降のデザイン変更はお受けできません。</p>
+        <p>データの校正・修正は<strong>3回まで無料</strong>です。<strong>4回目以降は1回につき+5,000円（税別）の追加費用が発生いたします。</strong><br>料金を抑えるためにも、納期を遅らせないためにも、修正点はできるだけまとめてご指示いただきますようお願いいたします。<br>また、お振込確認後のデザイン変更はお受けできません。</p>
       </div>
       <div class="note-card">
-        <h3>数量追加の締切について</h3>
-        <p>ご発注から10日目以降は、生産ラインの都合上、数量の追加はお受けできません。</p>
+        <h3>サンプルの発送について</h3>
+        <p>サンプル発送の対応料は<strong>3回まで無料</strong>。4回目以降は<strong>+5,000円/回</strong>となります。<br>なお、送料（郵便、ヤマト運輸等）は<strong>初回のみ弊社負担</strong>、<strong>2回目以降はお客様着払い</strong>となります。</p>
       </div>
+
       <div class="note-card">
         <h3>入稿データについて</h3>
-        <p>JPEG・PNG・PDF・Illustratorなどお手持ちのデータ形式で大丈夫です<br>※ 文字・ロゴは可能な限り高解像度でお送りください<br>※ 金色・銀色は印刷に入れられません</p>
+        <p><strong>JPEG・PNG・PDF・Illustrator</strong>などお手持ちのデータ形式で大丈夫です<br>※ 文字・ロゴは可能な限り高解像度でお送りください<br>※ 金色・銀色は印刷に入れられません</p>
       </div>
       <div class="note-card">
-        <h3>承認・入金の遅延について</h3>
-        <p>御社内での決裁状況により、ご承認・ご入金のタイミングで納期が前後いたします。余裕をもったご計画をお勧めします。</p>
+        <h3>納品日が後ろ倒しになる可能性について</h3>
+        <p>デザイン校正・修正やサンプル発送の回数が増えたり、また御社内での決裁・お振込のタイミングによって、<br><strong><u>当初ご予定の納品日からずれてしまう可能性があります。</u></strong><br>修正が多くなりそうな場合や、決裁・お振込にお時間がかかる場合は、<strong><u>納品日に十分な余裕をもってご計画ください。</u></strong></p>
       </div>
     </div>
   </div>
@@ -1541,9 +1572,9 @@
     <h2 class="sec-title">キャンセルについて</h2>
     <div class="divider"></div>
     <div style="max-width:560px; margin:0 auto;">
-      <div class="cancel-row"><div class="cancel-timing">納品・発送日の10日前</div><div class="cancel-fee">30%</div></div>
-      <div class="cancel-row"><div class="cancel-timing">納品・発送日の1週間前</div><div class="cancel-fee">50%</div></div>
-      <div class="cancel-row"><div class="cancel-timing">納品・発送日の3日前</div><div class="cancel-fee">70%</div></div>
+      <div class="cancel-row"><div class="cancel-timing">お振込日以降</div><div class="cancel-fee">30%</div></div>
+      <div class="cancel-row"><div class="cancel-timing">納品日の1週間前</div><div class="cancel-fee">50%</div></div>
+      <div class="cancel-row"><div class="cancel-timing">納品日の3日前</div><div class="cancel-fee">70%</div></div>
       <div class="cancel-row"><div class="cancel-timing">当日</div><div class="cancel-fee">100%</div></div>
     </div>
     <p style="text-align:center; font-size:0.78em; color:var(--text-sub); margin-top:20px;">※ 天災などやむを得ない事情による場合は除きます</p>
@@ -1578,7 +1609,7 @@
         </summary>
         <div class="faq-a">
           <span class="faq-a-label">A</span>
-          <span class="faq-a-text">銀行振込（前払い）にてお願いしております。実物サンプルのご確認後、請求書を発行いたします。ご入金（着金）の確認をもって製造開始となりますので、期日までにお振込みをお願いいたします。</span>
+          <span class="faq-a-text">銀行振込（前払い）にてお願いしております。実物サンプルのご確認後、請求書を発行いたします。お振込の確認をもって製造開始となりますので、期日までにお振込をお願いいたします。</span>
         </div>
       </details>
 
@@ -1638,7 +1669,7 @@
         </summary>
         <div class="faq-a">
           <span class="faq-a-label">A</span>
-          <span class="faq-a-text">Illustratorでのご入稿は納期が早まりやすく、お客様のイメージをより的確に再現できます。画像データでのご入稿は弊社にて配置・調整を行うため、仕上がりのご確認や修正のやりとりに数日いただく場合がございます。こだわりのデザインをお持ちの方や、お急ぎの場合はIllustratorでのご入稿をおすすめしております。</span>
+          <span class="faq-a-text">Illustratorでのご入稿は納期が早まりやすく、お客様のイメージをより的確に再現できます。画像データでのご入稿は弊社にて配置・調整を行うため、仕上がりのご確認や修正のやりとりによりお時間をいただく場合がございます。こだわりのデザインをお持ちの方や、お急ぎの場合はIllustratorでのご入稿をおすすめしております。</span>
         </div>
       </details>
 
@@ -1662,7 +1693,7 @@
         </summary>
         <div class="faq-a">
           <span class="faq-a-label">A</span>
-          <span class="faq-a-text">データの校正・修正は最大3回までとさせていただいております。修正のご指示はまとめてお送りいただきますと、スムーズに進行できます。なお、ご入金（着金）確認後のデザイン変更はお受けできませんので、サンプルのご確認は早めにお願いいたします。</span>
+          <span class="faq-a-text">データの校正・修正は3回まで無料です。4回目以降は1回につき+5,000円（税別）の追加費用が発生いたします。修正のご指示はまとめてお送りいただきますと、スムーズに進行できます。なお、お振込確認後のデザイン変更はお受けできませんので、サンプルのご確認は早めにお願いいたします。</span>
         </div>
       </details>
 
@@ -1748,6 +1779,113 @@
   });
 
   startTimer();
+})();
+</script>
+
+<!-- フローティング相談ボタン -->
+<style>
+  .float-btn {
+    position: fixed;
+    bottom: 28px;
+    right: 24px;
+    z-index: 999;
+    background: var(--white);
+    color: var(--brown);
+    text-decoration: none;
+    font-size: 0.88em;
+    letter-spacing: 0.1em;
+    padding: 14px 24px 14px 20px;
+    border-radius: 50px;
+    box-shadow: 0 4px 0 #b8842e, 0 6px 16px rgba(0,0,0,0.18);
+    border: 1.5px solid var(--gold);
+    transition: transform 0.1s, box-shadow 0.1s, opacity 0.3s, color 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 1;
+    overflow: hidden;
+  }
+  .float-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    border-radius: 50px;
+    transform: translateX(-100%);
+    transition: transform 0.35s ease;
+    z-index: 0;
+  }
+  .float-btn:hover::after { transform: translateX(0); }
+  .float-btn:hover { color: var(--white); }
+  .float-btn:hover svg { fill: var(--white); }
+  .float-divider {
+    width: 1px;
+    height: 1.2em;
+    background: var(--gold);
+    display: inline-block;
+    margin: 0 2px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    transition: background 0.3s;
+  }
+  .float-btn:hover .float-divider { background: var(--white); }
+  .float-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: var(--gold);
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+    transition: fill 0.3s;
+  }
+  .float-btn span {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+    position: relative;
+    z-index: 1;
+  }
+  .float-btn .float-sub {
+    font-size: 0.8em;
+    color: var(--brown-light);
+    letter-spacing: 0.06em;
+    transition: color 0.3s;
+  }
+  .float-btn:hover .float-sub { color: rgba(255,255,255,0.8); }
+  .float-btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 #b8842e, 0 2px 8px rgba(0,0,0,0.15);
+  }
+  @media (max-width: 767px) {
+    .float-btn {
+      bottom: 16px;
+      right: 16px;
+      font-size: 0.82em;
+      padding: 12px 20px 12px 16px;
+    }
+  }
+</style>
+<a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="float-btn" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  <span class="float-divider"></span>
+  <span>
+    <strong style="font-weight:700; letter-spacing:0.12em;">ご相談はこちら →</strong>
+  </span>
+</a>
+<script>
+(function() {
+  var btn = document.querySelector('.float-btn');
+  var hero = document.querySelector('.hero');
+  var contact = document.getElementById('contact');
+  function updateBtn() {
+    var heroVisible = hero && hero.getBoundingClientRect().bottom > 0;
+    var contactVisible = contact && contact.getBoundingClientRect().top < window.innerHeight;
+    btn.style.opacity = (heroVisible || contactVisible) ? '0' : '1';
+    btn.style.pointerEvents = (heroVisible || contactVisible) ? 'none' : 'auto';
+  }
+  window.addEventListener('scroll', updateBtn, { passive: true });
+  updateBtn();
 })();
 </script>
 
