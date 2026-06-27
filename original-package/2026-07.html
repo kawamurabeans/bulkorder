@@ -29,7 +29,7 @@
 
   /* ── HEADER ── */
   header {
-    position: fixed; top: 0; width: 100%; z-index: 250;
+    position: fixed; top: 0; width: 100%; z-index: 350;
     background: rgba(65,33,7,0.95);
     backdrop-filter: blur(4px);
     display: flex; align-items: center; justify-content: space-between;
@@ -988,7 +988,7 @@
   .sp-nav {
     position: fixed; inset: 0;
     background: var(--beige);
-    z-index: 200;
+    z-index: 300;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1949,10 +1949,17 @@
   });
 
   document.querySelectorAll('.sp-nav-link').forEach(function(link) {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
       nav.classList.remove('open');
       btn.classList.remove('open');
       hdr.classList.remove('nav-open');
+      if (target) {
+        setTimeout(function() {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }, 420);
+      }
     });
   });
 })();
@@ -1964,7 +1971,7 @@
     position: fixed;
     bottom: 28px;
     right: 24px;
-    z-index: 999;
+    z-index: 200;
     background: var(--white);
     color: var(--brown);
     text-decoration: none;
