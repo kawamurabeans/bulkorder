@@ -955,6 +955,8 @@
 
   /* スマホ専用改行（デフォルト非表示） */
   .sp-br { display: none; }
+  /* PC専用改行（SP非表示） */
+  .pc-br { display: inline; }
   .sp-hidden { display: inline; }
   .sp-method-divider { display: none; }
 
@@ -1006,6 +1008,8 @@
 
     /* スマホ専用改行を有効化 */
     .sp-br { display: inline; }
+    /* PC専用改行をSPで非表示 */
+    .pc-br { display: none; }
     .sp-hidden { display: none; }
 
     /* METHOD01 タイトル下仕切り線（SP限定） */
@@ -1399,7 +1403,7 @@
       </p>
       <hr style="border:none; border-top:1px solid var(--gray); margin:14px 0;">
       <p style="font-size:0.78em; color:var(--text-sub); line-height:1.8; letter-spacing:0.02em;">
-        ※ プレミアムver選択時は<strong>② オプション費</strong>、<br class="sp-br">修正・サンプル追加時は<strong>③ 追加対応費（デザイン修正・サンプル発送）</strong>が<br class="sp-br">加算されます（詳細は下記）
+        ※ プレミアムver選択時は<strong>② オプション費</strong>、修正・サンプル追加時は<br class="pc-br"><strong>③ 追加対応費（デザイン修正・サンプル発送）</strong>が加算されます（詳細は下記）
       </p>
     </div>
 
