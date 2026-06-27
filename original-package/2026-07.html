@@ -960,11 +960,58 @@
   .sp-hidden { display: inline; }
   .sp-method-divider { display: none; }
 
+  /* ── HAMBURGER MENU ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px; height: 36px;
+    background: none; border: none;
+    cursor: pointer; padding: 4px;
+    z-index: 200;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px; height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .sp-nav {
+    display: none;
+    position: fixed; top: 56px; left: 0; right: 0;
+    background: rgba(40,18,4,0.97);
+    backdrop-filter: blur(6px);
+    z-index: 99;
+    padding: 12px 0 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .sp-nav.open { display: block; }
+  .sp-nav a {
+    display: block;
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    font-size: 0.88em;
+    letter-spacing: 0.1em;
+    padding: 14px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    transition: color 0.2s, background 0.2s;
+  }
+  .sp-nav a:last-child { border-bottom: none; }
+  .sp-nav a:hover { color: var(--gold); background: rgba(255,255,255,0.04); }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
     .parallax-strip { display: none; }
     header { padding: 14px 20px; }
     nav { display: none; }
+    .hamburger { display: flex; }
     .feature-grid, .template-grid, .usecase-grid,
     .product-list, .notes-grid { grid-template-columns: 1fr; }
     .original-inner { grid-template-columns: 1fr; gap: 32px; }
@@ -1085,7 +1132,20 @@
     <a href="#flow">ご注文の流れ</a>
     <a href="#contact">お問い合わせ</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- SP NAV -->
+<div class="sp-nav" id="sp-nav">
+  <a href="#usecase" class="sp-nav-link">ご利用シーン</a>
+  <a href="#products" class="sp-nav-link">商品一覧</a>
+  <a href="#original" class="sp-nav-link">オリジナルパッケージ</a>
+  <a href="#price" class="sp-nav-link">料金</a>
+  <a href="#flow" class="sp-nav-link">ご注文の流れ</a>
+  <a href="#contact" class="sp-nav-link">お問い合わせ</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -1833,6 +1893,26 @@
   });
 
   startTimer();
+})();
+</script>
+
+<!-- ハンバーガーメニュー -->
+<script>
+(function() {
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('sp-nav');
+
+  btn.addEventListener('click', function() {
+    const isOpen = nav.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+  });
+
+  document.querySelectorAll('.sp-nav-link').forEach(function(link) {
+    link.addEventListener('click', function() {
+      nav.classList.remove('open');
+      btn.classList.remove('open');
+    });
+  });
 })();
 </script>
 
