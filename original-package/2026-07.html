@@ -987,7 +987,7 @@
   /* フルスクリーンオーバーレイ */
   .sp-nav {
     position: fixed; inset: 0;
-    background: var(--brown);
+    background: var(--beige);
     z-index: 200;
     display: flex;
     flex-direction: column;
@@ -1004,20 +1004,19 @@
   }
   .sp-nav a {
     display: block;
-    color: rgba(255,255,255,0.75);
+    color: var(--brown);
     text-decoration: none;
     font-size: 1.25em;
     letter-spacing: 0.2em;
     padding: 18px 0;
     text-align: center;
     width: 100%;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-    transition: color 0.2s, letter-spacing 0.2s;
+    border-bottom: 1px solid rgba(65,33,7,0.12);
     transform: translateY(12px);
     opacity: 0;
     transition: transform 0.4s ease, opacity 0.4s ease, color 0.2s;
   }
-  .sp-nav a:first-child { border-top: 1px solid rgba(255,255,255,0.08); }
+  .sp-nav a:first-child { border-top: 1px solid rgba(65,33,7,0.12); }
   .sp-nav.open a {
     transform: translateY(0);
     opacity: 1;
