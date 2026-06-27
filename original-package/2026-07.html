@@ -1020,13 +1020,26 @@
     transform: translateY(0);
     opacity: 1;
   }
-  .sp-nav.open a:nth-child(1) { transition-delay: 0.05s; }
-  .sp-nav.open a:nth-child(2) { transition-delay: 0.10s; }
-  .sp-nav.open a:nth-child(3) { transition-delay: 0.15s; }
-  .sp-nav.open a:nth-child(4) { transition-delay: 0.20s; }
-  .sp-nav.open a:nth-child(5) { transition-delay: 0.25s; }
-  .sp-nav.open a:nth-child(6) { transition-delay: 0.30s; }
+  .sp-nav.open a:nth-child(1)  { transition-delay: 0.05s; }
+  .sp-nav.open a:nth-child(2)  { transition-delay: 0.10s; }
+  .sp-nav.open a:nth-child(3)  { transition-delay: 0.15s; }
+  .sp-nav.open a:nth-child(4)  { transition-delay: 0.20s; }
+  .sp-nav.open a:nth-child(5)  { transition-delay: 0.25s; }
+  .sp-nav.open a:nth-child(6)  { transition-delay: 0.30s; }
+  .sp-nav.open a:nth-child(7)  { transition-delay: 0.35s; }
+  .sp-nav.open a:nth-child(8)  { transition-delay: 0.40s; }
+  .sp-nav.open a:nth-child(9)  { transition-delay: 0.45s; }
+  .sp-nav.open a:nth-child(10) { transition-delay: 0.50s; }
   .sp-nav a:active { color: var(--gold); }
+
+  /* メニュー展開時にヘッダーを非表示 */
+  header.nav-open {
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+  header.nav-open .header-logo,
+  header.nav-open nav { opacity: 0; pointer-events: none; }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 720px) {
@@ -1163,9 +1176,13 @@
 <div class="sp-nav" id="sp-nav">
   <a href="#usecase" class="sp-nav-link">ご利用シーン</a>
   <a href="#products" class="sp-nav-link">商品一覧</a>
-  <a href="#original" class="sp-nav-link">オリジナルパッケージ</a>
+  <a href="#template" class="sp-nav-link">デザイン方法</a>
   <a href="#price" class="sp-nav-link">料金</a>
   <a href="#flow" class="sp-nav-link">ご注文の流れ</a>
+  <a href="#schedule" class="sp-nav-link">納品スケジュール</a>
+  <a href="#notes" class="sp-nav-link">ご注意事項</a>
+  <a href="#cancel" class="sp-nav-link">キャンセルポリシー</a>
+  <a href="#faq" class="sp-nav-link">よくあるご質問</a>
   <a href="#contact" class="sp-nav-link">お問い合わせ</a>
 </div>
 
@@ -1647,7 +1664,7 @@
 <div class="parallax-strip"><div class="parallax-inner img-04"></div></div>
 
 <!-- SCHEDULE -->
-<section class="schedule-section">
+<section class="schedule-section" id="schedule">
   <div class="container">
     <span class="sec-eyebrow">SCHEDULE</span>
     <h2 class="sec-title">納品スケジュールの目安</h2>
@@ -1670,7 +1687,7 @@
 <div class="parallax-strip"><div class="parallax-inner img-05"></div></div>
 
 <!-- NOTES -->
-<section class="notes-section">
+<section class="notes-section" id="notes">
   <div class="container">
     <span class="sec-eyebrow">NOTES</span>
     <h2 class="sec-title">ご注意事項</h2>
@@ -1702,7 +1719,7 @@
 </section>
 
 <!-- CANCEL -->
-<section class="cancel-section">
+<section class="cancel-section" id="cancel">
   <div class="container">
     <span class="sec-eyebrow">CANCELLATION</span>
     <h2 class="sec-title">キャンセルについて</h2>
@@ -1718,7 +1735,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="faq-section">
+<section class="faq-section" id="faq">
   <div class="container">
     <span class="sec-eyebrow">FAQ</span>
     <h2 class="sec-title">よくあるご質問</h2>
@@ -1923,16 +1940,19 @@
 (function() {
   const btn = document.getElementById('hamburger');
   const nav = document.getElementById('sp-nav');
+  const hdr = document.querySelector('header');
 
   btn.addEventListener('click', function() {
     const isOpen = nav.classList.toggle('open');
     btn.classList.toggle('open', isOpen);
+    hdr.classList.toggle('nav-open', isOpen);
   });
 
   document.querySelectorAll('.sp-nav-link').forEach(function(link) {
     link.addEventListener('click', function() {
       nav.classList.remove('open');
       btn.classList.remove('open');
+      hdr.classList.remove('nav-open');
     });
   });
 })();
