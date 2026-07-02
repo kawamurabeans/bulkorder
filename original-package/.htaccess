@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^2026-07\.html$ https://bulk.mame-kawamura.com/ [R=301,L]
+RewriteRule ^$ https://bulk.mame-kawamura.com/ [R=301,L]
