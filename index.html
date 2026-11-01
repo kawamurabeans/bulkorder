@@ -1218,6 +1218,47 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
 
   }
+
+  /* ── CONTACT FORM（ページ内お問い合わせ。送信先 api/contact.php） ── */
+  .contact-form {
+    max-width: 680px; margin: 0 auto 40px; text-align: left;
+    background: var(--beige-light); color: var(--text);
+    padding: 44px 48px; border-radius: 4px;
+  }
+  .contact-form .cf-note { font-size: 0.78em; color: var(--text-sub); margin-bottom: 28px; }
+  .cf-req { display: inline-block; background: var(--brown-mid); color: var(--white); font-size: 0.68em; padding: 1px 7px; margin-left: 8px; letter-spacing: 0.08em; vertical-align: 2px; }
+  .cf-row { margin-bottom: 26px; border: none; padding: 0; }
+  .cf-row > label:not(.cf-choice), .cf-row > legend { display: block; font-size: 0.9em; font-weight: bold; margin-bottom: 8px; padding: 0; }
+  .cf-help { display: block; font-size: 0.76em; color: var(--text-sub); font-weight: normal; margin-top: 2px; }
+  .cf-row input[type="text"], .cf-row input[type="email"], .cf-row input[type="tel"], .cf-row input[type="date"], .cf-row textarea {
+    width: 100%; box-sizing: border-box; font: inherit; font-size: 16px;
+    padding: 11px 13px; border: 1px solid var(--gray); background: var(--white); color: var(--text); border-radius: 2px;
+  }
+  .cf-row textarea { min-height: 140px; resize: vertical; }
+  .cf-date-wrap { display: flex; gap: 8px; }
+  .cf-date-wrap input[type="text"] { flex: 1; min-width: 0; }
+  .cf-cal-btn { position: relative; flex-shrink: 0; display: flex; align-items: center; justify-content: center; width: 48px; color: var(--white); background: var(--brown-mid); border-radius: 2px; cursor: pointer; }
+  .cf-cal-btn input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; border: 0; padding: 0; }
+  .cf-row input:focus, .cf-row textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,151,58,0.18); }
+  .cf-choice { display: flex; align-items: flex-start; gap: 10px; font-size: 0.88em; margin: 8px 0; cursor: pointer; line-height: 1.6; }
+  .cf-choice input { margin-top: 5px; accent-color: var(--brown); flex-shrink: 0; }
+  .cf-row.is-error input[type="text"], .cf-row.is-error input[type="email"], .cf-row.is-error input[type="tel"] { border-color: #b3261e; }
+  .cf-err { display: none; color: #b3261e; font-size: 0.78em; margin-top: 6px; }
+  .cf-row.is-error .cf-err { display: block; }
+  .cf-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .cf-submit { text-align: center; margin-top: 36px; }
+  .cf-submit .btn-primary { font-size: 1em; font-weight: bold; letter-spacing: 0.18em; padding: 16px 64px; }
+  .cf-submit .btn-primary:disabled { opacity: 0.6; cursor: default; transform: none; }
+  .cf-msg { margin-top: 16px; font-size: 0.84em; text-align: center; }
+  .cf-msg.is-error { color: #b3261e; }
+  .contact-done { max-width: 680px; margin: 0 auto 40px; background: var(--beige-light); color: var(--text); padding: 48px; border-radius: 4px; }
+  .contact-done h3 { font-size: 1.1em; letter-spacing: 0.12em; margin-bottom: 16px; }
+  .contact-done p { font-size: 0.88em; line-height: 2; }
+  @media (max-width: 720px) {
+    .contact-form { padding: 32px 20px; }
+    .contact-done { padding: 36px 20px; }
+    .cf-submit .btn-primary { width: 100%; padding: 16px 0; }
+  }
 </style>
 </head>
 <body>
@@ -1286,7 +1327,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <em>世界に一つ</em>のパッケージで
     </h1>
     <p class="hero-sub">50袋から承ります　／　オリジナルパッケージ対応　／　<span class="hero-sub-br"></span>初期費用不要（版代無料）</p>
-    <a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="btn-primary" target="_blank">ご相談はこちら</a>
+    <a href="#contact" class="btn-primary">ご相談はこちら</a>
     <a href="#template" class="btn-outline">データ入稿について</a>
     <p style="font-size:0.72em; color:rgba(255,255,255,0.65); margin-top:10px; letter-spacing:0.06em;">JPEG・PNG・PDF・Illustratorなど<br class="sp-br">お手持ちのデータで大丈夫です</p>
   </div>
@@ -1552,7 +1593,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <p style="text-align:center; font-size:0.82em; color:rgba(255,255,255,0.55); letter-spacing:0.06em;">どちらの方法でもご不明な点は<br class="sp-br">お気軽にご相談ください</p>
     <div style="text-align:center; margin-top:24px;">
-      <a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="btn-primary" target="_blank" style="font-size:1em; font-weight:bold; letter-spacing:0.18em; padding:16px 56px;">ご相談はこちら</a>
+      <a href="#contact" class="btn-primary" style="font-size:1em; font-weight:bold; letter-spacing:0.18em; padding:16px 56px;">ご相談はこちら</a>
     </div>
   </div>
 </section>
@@ -1937,7 +1978,95 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h2 class="sec-title">お問い合わせ・ご相談</h2>
     <div class="divider"></div>
     <p class="sec-lead">数量・用途・ご予算など<br>どんな小さなご質問もお気軽にどうぞ<br>お見積もりは無料で承っております</p>
-    <a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="btn-primary" target="_blank">ご相談はこちら</a>
+    <form class="contact-form" id="contact-form" novalidate>
+      <p class="cf-note">送信後、ご入力のメールアドレスに受付のご案内をお送りします。</p>
+
+      <div class="cf-row">
+        <label for="cf-company">会社名・法人名・団体名<span class="cf-req">必須</span><span class="cf-help">個人でのご注文の場合は「個人」とご記入ください</span></label>
+        <input type="text" id="cf-company" name="company" maxlength="100" required autocomplete="organization">
+        <p class="cf-err">会社名・団体名をご記入ください</p>
+      </div>
+      <div class="cf-row">
+        <label for="cf-name">ご担当者のお名前<span class="cf-req">必須</span></label>
+        <input type="text" id="cf-name" name="name" maxlength="60" required autocomplete="name">
+        <p class="cf-err">お名前をご記入ください</p>
+      </div>
+      <div class="cf-row">
+        <label for="cf-email">ご返信先のメールアドレス<span class="cf-req">必須</span></label>
+        <input type="email" id="cf-email" name="email" maxlength="200" required autocomplete="email" inputmode="email">
+        <p class="cf-err">メールアドレスを正しくご記入ください</p>
+      </div>
+      <div class="cf-row">
+        <label for="cf-tel">日中にご連絡可能な電話番号</label>
+        <input type="tel" id="cf-tel" name="tel" maxlength="30" autocomplete="tel" inputmode="tel">
+        <p class="cf-err">電話番号を正しくご記入ください</p>
+      </div>
+      <fieldset class="cf-row" data-group="products">
+        <legend>ご希望の商品<span class="cf-req">必須</span><span class="cf-help">複数お選びいただけます</span></legend>
+        <label class="cf-choice"><input type="checkbox" name="products[]" value="能登大納言">能登大納言</label>
+        <label class="cf-choice"><input type="checkbox" name="products[]" value="石川県のだいず">石川県のだいず</label>
+        <label class="cf-choice"><input type="checkbox" name="products[]" value="白花美人">白花美人</label>
+        <label class="cf-choice"><input type="checkbox" name="products[]" value="蓮の実">蓮の実</label>
+        <label class="cf-choice"><input type="checkbox" name="products[]" value="その他">その他</label>
+        <label class="cf-choice"><input type="checkbox" name="products[]" value="まだ決めていない・詳しく聞きたい">まだ決めていない・詳しく聞きたい</label>
+        <p class="cf-err">ご希望の商品をお選びください</p>
+      </fieldset>
+      <div class="cf-row">
+        <label for="cf-other">「その他」とご回答された方は、ご検討中の商品をご記入ください</label>
+        <input type="text" id="cf-other" name="product_other" maxlength="200">
+      </div>
+      <div class="cf-row">
+        <label for="cf-qty">ご希望のおおよその数量<span class="cf-req">必須</span></label>
+        <input type="text" id="cf-qty" name="quantity" maxlength="100" required placeholder="例：300袋">
+        <p class="cf-err">おおよその数量をご記入ください</p>
+      </div>
+      <fieldset class="cf-row" data-group="data">
+        <legend>ご希望の入稿方法<span class="cf-req">必須</span></legend>
+        <label class="cf-choice"><input type="radio" name="data" value="画像データ（JPEG・PNG・PDFなど）を送る">画像データ（JPEG・PNG・PDFなど）を送る</label>
+        <label class="cf-choice"><input type="radio" name="data" value="Illustratorデータ（.ai）で入稿する">Illustratorデータ（.ai）で入稿する</label>
+        <label class="cf-choice"><input type="radio" name="data" value="まだ決まっていない・相談したい">まだ決まっていない・相談したい</label>
+        <p class="cf-err">入稿方法をお選びください</p>
+      </fieldset>
+      <fieldset class="cf-row" data-group="spec">
+        <legend>ご希望のパッケージ仕様<span class="cf-req">必須</span></legend>
+        <label class="cf-choice"><input type="radio" name="spec" value="通常バージョン（標準印刷エリア）">通常バージョン（標準印刷エリア）</label>
+        <label class="cf-choice"><input type="radio" name="spec" value="プレミアムバージョン（印刷エリア拡張）">プレミアムバージョン（印刷エリア拡張）</label>
+        <label class="cf-choice"><input type="radio" name="spec" value="まだ決めていない・詳しく聞きたい">まだ決めていない・詳しく聞きたい</label>
+        <p class="cf-err">パッケージ仕様をお選びください</p>
+      </fieldset>
+      <fieldset class="cf-row">
+        <legend>ご利用用途に最も近いもの</legend>
+        <label class="cf-choice"><input type="radio" name="purpose" value="企業の周年記念・お取引先への贈答品">企業の周年記念・お取引先への贈答品</label>
+        <label class="cf-choice"><input type="radio" name="purpose" value="社内イベント・展示会のノベルティ">社内イベント・展示会のノベルティ</label>
+        <label class="cf-choice"><input type="radio" name="purpose" value="組合・学会・定例会合でのお菓子">組合・学会・定例会合でのお菓子</label>
+        <label class="cf-choice"><input type="radio" name="purpose" value="内定者・新入社員へのウェルカムギフト">内定者・新入社員へのウェルカムギフト</label>
+        <label class="cf-choice"><input type="radio" name="purpose" value="その他">その他</label>
+      </fieldset>
+      <div class="cf-row">
+        <label for="cf-date">ご希望の納品日<span class="cf-help">ご注文確定から最短22日をいただいております。「12月中旬」などおおよその時期でも結構です</span></label>
+        <div class="cf-date-wrap">
+          <input type="text" id="cf-date" name="delivery" maxlength="50" placeholder="例：2026年12月20日">
+          <span class="cf-cal-btn" title="カレンダーから選ぶ"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="1.5"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><input type="date" id="cf-date-pick" tabindex="-1" aria-label="カレンダーから選ぶ"></span>
+        </div>
+      </div>
+      <div class="cf-row">
+        <label for="cf-msg">ご不明な点やご要望など</label>
+        <textarea id="cf-msg" name="message" maxlength="2000"></textarea>
+      </div>
+
+      <div class="cf-hp" aria-hidden="true"><label>website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+      <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
+
+      <div class="cf-submit">
+        <button type="submit" class="btn-primary">この内容で送信する</button>
+        <p class="cf-msg" id="cf-send-msg" role="status"></p>
+      </div>
+    </form>
+    <div class="contact-done" id="contact-done" hidden>
+      <h3>お問い合わせを受け付けました</h3>
+      <p>ありがとうございます。<br>ご入力のメールアドレスに受付のご案内をお送りしました。<br>内容を確認のうえ、担当者より順次ご連絡いたします。</p>
+      <p style="font-size:0.78em; color:var(--text-sub); margin-top:12px;">受付メールが届かない場合は、迷惑メールフォルダをご確認いただくか、お電話（076-282-7000）にてお問い合わせください。</p>
+    </div>
     <a href="#template" class="btn-outline">データ入稿について</a>
     <p class="cta-info">
       甘納豆かわむら<br>
@@ -2125,7 +2254,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 </style>
-<a href="https://forms.gle/Zba7Aj1gCdAgb34J6" class="float-btn" target="_blank" rel="noopener">
+<a href="#contact" class="float-btn">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4C2.9 4 2 4.9 2 6v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
   <span class="float-divider"></span>
   <span>
@@ -2148,5 +2277,86 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 })();
 </script>
 
+<script>
+// ── CONTACT FORM ──
+// 送信先：Xserver に置いた PHP（/api/contact.php）。ローカル確認中は PHP が動かないので送信しない
+const CONTACT_ENDPOINT = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) || location.protocol === 'file:' ? '' : '/api/contact.php';
+(function() {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const done = document.getElementById('contact-done');
+  const sendBtn = form.querySelector('button[type="submit"]');
+  const sendMsg = document.getElementById('cf-send-msg');
+
+  // URLの utm_ パラメータを隠し項目に入れる（どこから来たお問い合わせかを記録）
+  const params = new URLSearchParams(location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign'].forEach(function(k) {
+    const input = form.querySelector('input[name="' + k + '"]');
+    if (input && params.get(k)) input.value = params.get(k).slice(0, 100);
+  });
+
+  // 納品日：カレンダーで選んだ日を「2026年12月20日」の形で文字欄に入れる（手書きもできる）。今日から22日後以降を選べるように
+  const dateText = document.getElementById('cf-date');
+  const datePick = document.getElementById('cf-date-pick');
+  const min = new Date(); min.setDate(min.getDate() + 22);
+  datePick.min = min.getFullYear() + '-' + String(min.getMonth() + 1).padStart(2, '0') + '-' + String(min.getDate()).padStart(2, '0');
+  dateText.placeholder = '例：' + min.getFullYear() + '年' + (min.getMonth() + 1) + '月' + min.getDate() + '日';
+  datePick.addEventListener('click', function() { try { datePick.showPicker(); } catch (e) {} });
+  datePick.addEventListener('change', function() {
+    const m = datePick.value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (m) dateText.value = m[1] + '年' + Number(m[2]) + '月' + Number(m[3]) + '日';
+  });
+
+  function check() {
+    let first = null;
+    form.querySelectorAll('.cf-row').forEach(function(row) {
+      let bad = false;
+      const input = row.querySelector('input[required]');
+      if (input) bad = !input.value.trim() || (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim()));
+      if (row.querySelector('#cf-tel')) {
+        const digits = row.querySelector('#cf-tel').value.replace(/[０-９]/g, function(c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); }).replace(/\D/g, '');
+        bad = digits !== '' && !/^0\d{9,10}$/.test(digits);
+      }
+      if (row.dataset.group) bad = !row.querySelector('input:checked');
+      row.classList.toggle('is-error', bad);
+      if (bad && !first) first = row;
+    });
+    return first;
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    sendMsg.textContent = ''; sendMsg.classList.remove('is-error');
+    const bad = check();
+    if (bad) { bad.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+    if (!CONTACT_ENDPOINT) { sendMsg.textContent = '（確認用のページのため送信しません）'; return; }
+    const label = sendBtn.textContent;
+    sendBtn.disabled = true; sendBtn.textContent = '送信中…';
+    try {
+      const res = await fetch(CONTACT_ENDPOINT, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      const json = await res.json().catch(function() { return {}; });
+      if (!res.ok || !json.ok) { const err = new Error(json.error || 'send failed'); err.status = res.status; err.code = json.error; throw err; }
+      form.hidden = true; done.hidden = false;
+      done.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      sendBtn.disabled = false; sendBtn.textContent = label;
+      sendMsg.classList.add('is-error');
+      if (err.code === 'rate') {
+        sendMsg.textContent = '続けて送信されたため、受け付けを一時的に止めています。1分ほどおいてから、もう一度お試しください。';
+      } else if (!err.code && (err.status === 403 || err.status === 501)) {
+        sendMsg.textContent = 'ご入力内容に、安全のため送信できない記号の組み合わせ（「; id」「../」など）が含まれている可能性があります。記号を減らして再度お試しいただくか、お電話（076-282-7000）にてご連絡ください。';
+      } else {
+        sendMsg.textContent = '送信できませんでした。時間をおいて再度お試しいただくか、お電話（076-282-7000）にてご連絡ください。';
+      }
+    }
+  });
+  // 「ご相談はこちら」ボタン → 「お問い合わせ・ご相談」の見出しへなめらかに移動
+  document.querySelectorAll('a.btn-primary[href="#contact"], a.float-btn[href="#contact"]').forEach(function(a) {
+    a.addEventListener('click', function(e) { e.preventDefault(); document.getElementById('contact').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  });
+  // 入力し直したらエラー表示を消す
+  form.addEventListener('input', function(e) { const row = e.target.closest('.cf-row'); if (row) row.classList.remove('is-error'); });
+})();
+</script>
 </body>
 </html>

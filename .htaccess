@@ -1,1 +1,14 @@
 RewriteEngine Off
+
+# セキュリティ用のヘッダー（このサブドメインの中だけに効く。メインドメインには影響しない）
+<IfModule mod_headers.c>
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>
+
+# 部品として読み込むだけの PHP（*.inc.php）は Web から直接開けないようにする
+<FilesMatch "\.inc\.php$">
+  Require all denied
+</FilesMatch>
