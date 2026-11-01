@@ -1191,6 +1191,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .price-table .th-sub, .price-table .td-sub { font-size: 0.82em; opacity: 0.85; }
     .price-table td:first-child { text-align: center; }
 
+    /* お問い合わせ欄：スマホでは背景の透過写真を出さない */
+    .cta-section::before { display: none; }
+
     /* CTAボタンをheroと同じ縦並び中央に（⑨） */
     .cta-section .btn-primary { display: block; margin: 0 auto; text-align: center; }
     .cta-section .btn-outline { display: block; margin: 14px auto 0; text-align: center; }
