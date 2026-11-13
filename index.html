@@ -114,6 +114,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   nav a:hover { color: var(--gold); }
 
+  /* ── 繁忙期のお知らせ（ヘッダー上部に追従）2026-11-13追加・2027年1月に削除予定 ── */
+  header { flex-wrap: wrap; }
+  header > nav { flex: 1 1 0; min-width: 0; text-align: right; }
+  .season-notice {
+    order: -1; flex-basis: calc(100% + 96px);
+    margin: -16px -48px 12px;
+    padding: 11px 16px;
+    background: #8b2a2e; color: #fff;
+    font-size: 0.95em; letter-spacing: 0.08em; line-height: 1.5;
+    text-align: center; font-weight: 600;
+  }
+  .season-notice a { color: inherit; text-decoration: underline; text-decoration-color: rgba(255,255,255,0.6); text-underline-offset: 3px; }
+  header.nav-open .season-notice { opacity: 0; pointer-events: none; }
+  .cf-season {
+    border: 1px solid var(--gold); border-radius: 4px;
+    background: rgba(201,169,110,0.08); padding: 14px 16px;
+  }
+  .cf-season .cf-season-text { font-size: 0.86em; line-height: 1.7; margin: 0 0 8px; }
+
   /* ── HERO ── */
   .hero {
     height: 100vh; min-height: 600px;
@@ -1111,6 +1130,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   @media (max-width: 720px) {
     .parallax-strip { display: none; }
     header { padding: 14px 20px; }
+    .season-notice { flex-basis: calc(100% + 40px); margin: -14px -20px 10px; font-size: 0.8em; padding: 9px 12px; }
     nav { display: none; }
     .hamburger { display: flex; }
     .feature-grid, .template-grid, .usecase-grid,
@@ -1272,6 +1292,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- HEADER -->
 <header>
+  <!-- 繁忙期のお知らせ（2026-11-13追加）。2027年1月に削除予定。日付を過ぎると下のスクリプトで自動的に消える -->
+  <div class="season-notice" data-season-until="2027-01-01T00:00:00+09:00">
+    11〜12月は繁忙期のため、<br class="sp-br"><a href="#contact">1月15日以降のお届けのみ承っております</a>
+  </div>
   <div class="header-logo"><span>甘納豆かわむら</span> | 大口・法人注文</div>
   <nav>
     <a href="#usecase">ご利用シーン</a>
@@ -2057,6 +2081,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <textarea id="cf-msg" name="message" maxlength="2000"></textarea>
       </div>
 
+      <!-- 繁忙期の確認事項（2026-11-13追加）。2027年1月に削除予定。日付を過ぎると自動的に消える -->
+      <fieldset class="cf-row cf-season" data-group="season" data-season-until="2027-01-01T00:00:00+09:00">
+        <legend>ご確認事項<span class="cf-req">必須</span></legend>
+        <p class="cf-season-text">11〜12月は繁忙期のため、<strong>2027年1月15日以降のお届けのみ</strong>承っております。</p>
+        <label class="cf-choice"><input type="checkbox" name="season_ok" value="1">1月15日以降のお届けであることを確認しました</label>
+        <p class="cf-err">ご確認のうえ、チェックを入れてください</p>
+      </fieldset>
+
       <div class="cf-hp" aria-hidden="true"><label>website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
       <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign">
 
@@ -2298,10 +2330,19 @@ const CONTACT_ENDPOINT = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ||
     if (input && params.get(k)) input.value = params.get(k).slice(0, 100);
   });
 
+  // 繁忙期のお知らせ・確認事項：期限を過ぎたら消す（2027年1月にコードごと削除予定）
+  let seasonActive = false;
+  document.querySelectorAll('[data-season-until]').forEach(function(el) {
+    if (Date.now() >= new Date(el.dataset.seasonUntil).getTime()) el.remove(); else seasonActive = true;
+  });
+
   // 納品日：カレンダーで選んだ日を「2026年12月20日」の形で文字欄に入れる（手書きもできる）。今日から22日後以降を選べるように
+  // 繁忙期のお知らせ中は 2027/1/15 より前を選べないようにする
   const dateText = document.getElementById('cf-date');
   const datePick = document.getElementById('cf-date-pick');
-  const min = new Date(); min.setDate(min.getDate() + 22);
+  let min = new Date(); min.setDate(min.getDate() + 22);
+  const seasonMin = new Date(2027, 0, 15);
+  if (seasonActive && min < seasonMin) min = seasonMin;
   datePick.min = min.getFullYear() + '-' + String(min.getMonth() + 1).padStart(2, '0') + '-' + String(min.getDate()).padStart(2, '0');
   dateText.placeholder = '例：' + min.getFullYear() + '年' + (min.getMonth() + 1) + '月' + min.getDate() + '日';
   datePick.addEventListener('click', function() { try { datePick.showPicker(); } catch (e) {} });
